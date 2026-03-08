@@ -263,22 +263,22 @@
     color:rgba(238,222,148,.92);
     line-height:.88;
     text-align:center;
-    text-shadow: 0 0 100px rgba(220,200,90,.22), 0 2px 4px rgba(0,0,0,.24);
+    text-shadow: 0 2px 12px rgba(0,0,0,.45), 0 0 40px rgba(0,0,0,.2);
     opacity:0; transform:translateY(46px);
   }
   .hero-cursive.anim { animation:fadeUp 2s cubic-bezier(.16,1,.3,1) .5s forwards; }
   .hero-cursive-line1 { display:block; }
   .hero-cursive-line2 { display:block; font-size:clamp(4rem,18vw,6.5rem); }
 
-  /* Our wedding day — 메인 필기체와 동일 색상 */
+  /* Our wedding day — 가독성 좋은 밝은 크림화이트 */
   .hero-cursive-sub {
     display:block;
     font-family:'WeddingScript',cursive;
     font-size:clamp(1.2rem, 5.5vw, 1.8rem);
-    color:rgba(238,222,148,.92);
+    color:rgba(255,248,232,.88);
     margin-top:14px;
     letter-spacing:.01em;
-    text-shadow: 0 0 100px rgba(220,200,90,.22), 0 2px 4px rgba(0,0,0,.24);
+    text-shadow: 0 2px 10px rgba(0,0,0,.5), 0 0 30px rgba(0,0,0,.2);
   }
 
   /* 골드 구분선 — 제거 */
@@ -287,19 +287,19 @@
   /* 커플 이름 (숨김) */
   .hero-couple-name { display:none; }
 
-  /* 날짜 — 어두운 앰버골드로 가독성 확보 */
+  /* 날짜 — our wedding day와 동일한 크림화이트, 겹침 방지 margin-top 증가 */
   .hero-date-pill {
-    margin-top:0;
+    margin-top:18px;
     display:inline-flex; align-items:center; gap:10px;
     padding:4px 0;
     font-size:.66rem; font-weight:400;
     letter-spacing:.16em;
-    color:rgba(185,148,72,.90);
-    text-shadow: 0 0 80px rgba(160,120,40,.25), 0 2px 4px rgba(0,0,0,.30);
+    color:rgba(255,248,232,.80);
+    text-shadow: 0 2px 10px rgba(0,0,0,.5);
     opacity:0; transform:translateY(8px);
   }
   .hero-date-pill.anim { animation:fadeUp 1s ease 1.35s forwards; }
-  .pill-dot { width:3px; height:3px; border-radius:50%; background:var(--gold); opacity:.5; }
+  .pill-dot { width:3px; height:3px; border-radius:50%; background:rgba(255,248,232,.6); opacity:.7; }
 
   /* 스크롤 유도 — 정중앙 */
   .hero-scroll {
@@ -328,12 +328,12 @@
   .eyebrow {
     font-size:.68rem; letter-spacing:.35em;
     text-transform:uppercase; color:var(--gold);
-    font-weight:700;
+    font-weight:400;
     text-align:center; margin-bottom:18px;
   }
   .sec-title {
     font-family:'WeddingSerif',serif;
-    font-size:2rem; font-weight:400;
+    font-size:2rem; font-weight:300;
     text-align:center; color:var(--dark-brown);
     line-height:1.35; letter-spacing:.01em; margin-bottom:36px;
   }
@@ -393,7 +393,7 @@
   .cal-wrap { background:#fff; border-radius:var(--radius-xl); padding:30px 18px 34px; box-shadow:var(--shadow-soft); border:1px solid var(--beige); }
   .cal-head { text-align:center; margin-bottom:24px; }
   .cal-year  { font-size:.6rem; letter-spacing:.28em; color:var(--light-brown); margin-bottom:3px; }
-  .cal-month { font-family:'WeddingSerif',serif; font-size:2.2rem; font-weight:700; color:var(--dark-brown); letter-spacing:.08em; }
+  .cal-month { font-family:'WeddingSerif',serif; font-size:2.2rem; font-weight:400; color:var(--dark-brown); letter-spacing:.08em; }
 
   .cal-wdays { display:grid; grid-template-columns:repeat(7,1fr); margin-bottom:6px; }
   .wd { text-align:center; font-size:.58rem; letter-spacing:.06em; color:var(--light-brown); padding:4px 0; }
@@ -408,8 +408,8 @@
   @keyframes hb { 0%,100%{transform:scale(1);} 50%{transform:scale(1.4);} }
 
   .date-badge { margin-top:22px; text-align:center; padding:22px 20px; background:linear-gradient(135deg,rgba(201,169,110,.05),rgba(201,169,110,.10)); border-radius:var(--radius-lg); border:1px solid rgba(201,169,110,.14); }
-  .date-badge-main { font-family:'WeddingSerif',serif; font-size:1.3rem; color:var(--dark-brown); font-weight:700; letter-spacing:.04em; }
-  .date-badge-time { font-family:'WeddingSerif',serif; font-size:1.3rem; color:var(--dark-brown); margin-top:4px; letter-spacing:.04em; font-weight:700; }
+  .date-badge-main { font-family:'WeddingSerif',serif; font-size:1.3rem; color:var(--dark-brown); font-weight:400; letter-spacing:.04em; }
+  .date-badge-time { font-family:'WeddingSerif',serif; font-size:1.3rem; color:var(--dark-brown); margin-top:4px; letter-spacing:.04em; font-weight:400; }
   .date-badge-rule { width:28px; height:1px; background:linear-gradient(90deg,transparent,var(--gold-dark),transparent); margin:16px auto; }
   .countdown-label { font-size:.78rem; color:var(--mid-brown); letter-spacing:.02em; margin-bottom:12px; word-break:keep-all; }
   .countdown-wrap { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:4px; }
@@ -574,6 +574,7 @@
   ══════════════════════════════ */
   #accounts { background:var(--cream); }
 
+
   .acc-item { background:#fff; border-radius:var(--radius-lg); border:1px solid var(--beige); margin-bottom:10px; overflow:hidden; transition:box-shadow .3s ease; }
   .acc-item.open { box-shadow:var(--shadow-soft); }
   .acc-header { padding:18px 20px; display:flex; align-items:center; justify-content:space-between; cursor:pointer; user-select:none; transition:background .2s ease; }
@@ -593,7 +594,7 @@
   .copy-num-btn:active { transform:scale(.92); }
 
   .pay-row { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:4px; }
-  .pay-btn { padding:13px 6px; border-radius:var(--radius-pill); border:none; font-size:.72rem; font-family:'WeddingSans',sans-serif; font-weight:400; cursor:pointer; letter-spacing:.02em; display:flex; align-items:center; justify-content:center; gap:5px; transition:all .25s cubic-bezier(.34,1.56,.64,1); }
+  .pay-btn { padding:13px 6px; border-radius:var(--radius-pill); border:none; font-size:.72rem; font-family:'WeddingSans',sans-serif; font-weight:400; cursor:pointer; letter-spacing:.02em; display:flex; align-items:center; justify-content:center; gap:7px; transition:all .25s cubic-bezier(.34,1.56,.64,1); line-height:1; }
   .pay-btn:active { transform:scale(.93); }
   .btn-toss  { background:#0064FF; color:#fff; }
   .btn-kakao { background:#FEE500; color:#3A1D1D; }
@@ -633,40 +634,86 @@
   /* ══════════════════════════════
      FOOTER
   ══════════════════════════════ */
-  #footer-fade { height:120px; background:linear-gradient(to bottom,var(--cream),#12100D); }
-  #footer { background:#12100D; text-align:center; position:relative; overflow:hidden; }
+  #footer-fade { display:none; }
+  /* footer 배경 = cream → accounts와 끊김 없이 이어짐 */
+  #footer { background:var(--cream); text-align:center; position:relative; overflow:hidden; display:flex; flex-direction:column; }
+
+  /* cream-bridge 제거 — 이미지 상단 그라데이션으로 대체 */
+  .footer-cream-bridge { display:none; }
+
   .footer-img-wrap {
     position:relative;
-    height:320px; overflow:hidden;
+    height:460px; overflow:hidden; flex-shrink:0;
   }
   .footer-img-wrap img {
     width:100%; height:100%; object-fit:cover; object-position:center 30%; display:block;
   }
+  /* 상단: cream에서 투명으로 살짝만 (인물 가리지 않게 18%만), 하단: 60% 이후 어둡게 */
   .footer-img-wrap::after {
     content:''; position:absolute; inset:0; z-index:1;
-    background:linear-gradient(to bottom, #12100D 0%, rgba(18,16,13,.2) 40%, rgba(18,16,13,.5) 75%, #12100D 100%);
+    background:linear-gradient(to bottom,
+      var(--cream) 0%,
+      rgba(250,247,242,.55) 8%,
+      rgba(250,247,242,.15) 15%,
+      transparent 22%,
+      transparent 58%,
+      rgba(18,16,13,.50) 80%,
+      #12100D 100%
+    );
   }
-  .footer-content { padding:56px 28px 48px; position:relative; z-index:1; }
-  .footer-heart { font-family:'WeddingScript',cursive; font-size:3.2rem; color:var(--gold); opacity:.65; margin-bottom:16px; display:block; }
-  .footer-msg { font-size:.88rem; line-height:2.3; color:rgba(220,200,170,.70); font-weight:400; word-break:keep-all; max-width:270px; margin:0 auto; }
-  .footer-rule { width:36px; height:1px; background:linear-gradient(90deg,transparent,var(--gold-dark),transparent); margin:30px auto; }
+
+  /* 어두운 콘텐츠 영역 */
+  .footer-content {
+    background:#12100D;
+    padding:100px 28px 0;
+    position:relative; z-index:1;
+    flex:1; display:flex; flex-direction:column; align-items:center;
+  }
+
+  /* 하트 SVG 아이콘 — 점 없이 아웃라인만 */
+  .footer-heart-icon {
+    display:block; margin:0 auto 32px;
+    animation: heartFloat 3.6s ease-in-out infinite;
+    transform-origin: center center;
+  }
+  @keyframes heartFloat {
+    0%,100% { transform:translateY(0) scale(1);      opacity:.65; }
+    35%      { transform:translateY(-6px) scale(1.07); opacity:.85; }
+    65%      { transform:translateY(-2px) scale(1.02); opacity:.75; }
+  }
+
+  /* 감사합니다 이후 여운 여백 충분히 */
+  .footer-msg {
+    font-size:.88rem; line-height:2.5;
+    color:rgba(220,200,170,.68); font-weight:400;
+    word-break:keep-all; max-width:270px;
+    margin:0 auto;
+    padding-bottom:96px;
+  }
+  .footer-rule { width:36px; height:1px; background:linear-gradient(90deg,transparent,var(--gold-dark),transparent); margin:0 auto 36px; }
+  .footer-kakao-wrap { margin-top:52px; }
   .footer-kakao-btn {
     display:inline-flex; align-items:center; justify-content:center; gap:8px;
-    background:rgba(255,255,255,.08);
-    backdrop-filter:blur(12px);
-    -webkit-backdrop-filter:blur(12px);
-    color:rgba(232,213,176,.85);
-    border:1px solid rgba(201,169,110,.25);
+    background:rgba(255,255,255,.07);
+    backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+    color:rgba(232,213,176,.80);
+    border:none;
     border-radius:var(--radius-pill);
-    padding:13px 28px; font-size:.82rem; font-weight:400;
+    padding:14px 30px; font-size:.82rem; font-weight:400;
     font-family:'WeddingSans',sans-serif; cursor:pointer; letter-spacing:.06em;
     transition:all .25s cubic-bezier(.34,1.56,.64,1);
     margin-bottom:6px;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);
   }
   .footer-kakao-btn:active { transform:scale(.95); }
-  .footer-kakao-btn:hover  { background:rgba(255,255,255,.14); border-color:rgba(201,169,110,.45); }
-  .footer-kakao-label { font-size:.56rem; letter-spacing:.16em; color:rgba(201,169,110,.28); text-transform:uppercase; margin-bottom:28px; display:block; }
-  .footer-credit { font-size:.52rem; letter-spacing:.18em; color:rgba(201,169,110,.22); text-transform:uppercase; margin-bottom:0; padding-bottom:48px; display:block; }
+  .footer-kakao-btn:hover  { background:rgba(255,255,255,.13); }
+  .footer-kakao-label { font-size:.56rem; letter-spacing:.16em; color:rgba(201,169,110,.28); text-transform:uppercase; display:block; margin-top:8px; }
+  /* 크레딧 — 완전 최하단, 2px 여백 */
+  .footer-credit {
+    font-size:.52rem; letter-spacing:.18em; color:rgba(201,169,110,.18);
+    text-transform:uppercase; display:block; width:100%;
+    margin-top:auto; padding:56px 0 2px;
+  }
 
   /* ══════════════════════════════
      TOAST
@@ -682,6 +729,7 @@
   }
 </style>
 <script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=9sc717mqtg"></script>
+<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js" integrity="sha384-TiCUE00h649CAMonG018J2ujOgDKW/kVWlChEuu4jK2vxfAAD0eZxzCKakxg55G4" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -846,7 +894,6 @@
     <div id="naver-map" class="reveal d2" style="width:100%; height:220px; border-radius:var(--radius-lg); overflow:hidden; margin-bottom:14px; border:1px solid var(--beige-mid);"></div>
     <div class="addr-row reveal d2">
       <span class="addr-txt">서울 마포구 마포대로 78</span>
-      <button class="copy-btn" onclick="copyAddr()">📋 복사</button>
     </div>
     <div class="map-btns reveal d3">
       <a class="map-btn" href="#" onclick="openMap('naver',event)">
@@ -908,9 +955,9 @@
           <span style="padding-left:1.2em"><svg width="8" height="8" viewBox="0 0 8 8" style="display:inline-block;vertical-align:middle;margin-right:5px;margin-bottom:1px"><circle cx="4" cy="4" r="2.5" fill="var(--gold-dark)" opacity="0.7"/></svg>🍰 식사는 <strong>뷔페식</strong>으로 준비되어 있습니다.</span><br>
           <span style="padding-left:1.2em"><svg width="8" height="8" viewBox="0 0 8 8" style="display:inline-block;vertical-align:middle;margin-right:5px;margin-bottom:1px"><circle cx="4" cy="4" r="2.5" fill="var(--gold-dark)" opacity="0.7"/></svg>🍷 음료 및 주류는 자유롭게 이용하실 수 있습니다.</span><br>
           <span class="info-gap"></span>
-          <div style="text-align:center; padding:10px 0 4px;">
-            <span style="font-family:'WeddingSerif',serif; font-size:.95rem; color:var(--dark-brown); letter-spacing:.04em; line-height:1.9; display:block;">자리를 빛내주셔서 감사합니다.</span>
-            <span style="font-family:'WeddingSerif',serif; font-size:.95rem; color:var(--dark-brown); letter-spacing:.04em; line-height:1.9; display:block;">맛있게 식사하시고 편안한 시간 보내세요.</span>
+          <div style="text-align:center; padding:22px 0 10px;">
+            <span style="font-family:'WeddingSerif',serif; font-size:.95rem; color:var(--gold); letter-spacing:.04em; line-height:2.0; display:block;">자리를 빛내주셔서 감사합니다.</span>
+            <span style="font-family:'WeddingSerif',serif; font-size:.95rem; color:var(--gold); letter-spacing:.04em; line-height:2.0; display:block;">맛있게 식사하시고 편안한 시간 보내세요.</span>
           </div>
         </div>
       </div>
@@ -955,7 +1002,7 @@
             <div class="bank-num-row"><span class="bank-num">772-21-0091-724</span><button class="copy-num-btn" onclick="copyTxt('772210091724')">복사</button></div>
           </div>
           <div class="pay-row">
-            <button class="pay-btn btn-toss" onclick="toast('토스앱으로 연결합니다')"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M11.87 2C8.47 2 6 4.72 6 8.12v.52c0 .4.1.78.28 1.12L11.08 18c.4.78 1.2 1.26 2.06 1.26h.08c1.3 0 2.32-1.08 2.22-2.38l-.3-3.14h2.1c1.52 0 2.76-1.24 2.76-2.76V8.12C20 4.72 17.27 2 13.87 2h-2z" fill="white"/></svg>토스송금</button>
+            <button class="pay-btn btn-toss" onclick="toast('토스앱으로 연결합니다')"><svg width="16" height="16" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;display:block"><rect width="32" height="32" rx="8" fill="rgba(255,255,255,0.2)"/><path d="M9 10h14v3h-5.5v9h-3V13H9v-3z" fill="white"/></svg>토스페이</button>
             <button class="pay-btn btn-kakao" onclick="toast('카카오페이로 연결합니다')"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 3C7.03 3 3 6.36 3 10.5c0 2.67 1.67 5.02 4.18 6.4l-1.06 3.93c-.09.34.28.62.58.43L11.1 18.9c.29.04.59.06.9.06 4.97 0 9-3.36 9-7.5S16.97 3 12 3z" fill="#3A1D1D"/></svg>카카오페이</button>
           </div>
         </div>
@@ -977,17 +1024,14 @@
             <div class="bank-num-row"><span class="bank-num">1002-849-555777</span><button class="copy-num-btn" onclick="copyTxt('1002849555777')">복사</button></div>
           </div>
           <div class="bank-row">
-            <div class="bank-name">○○은행 · 정현용 (모)</div>
+            <div class="bank-name">하나은행 · 정현용 (모)</div>
             <div class="bank-num-row">
-              <!-- TODO: 신부 어머니(정현용) 계좌번호 입력 후 아래 주석 해제
-              <span class="bank-num">계좌번호 입력</span>
-              <button class="copy-num-btn" onclick="copyTxt('계좌번호입력')">복사</button>
-              -->
-              <span class="bank-num" style="color:var(--light-brown); font-size:.78rem; font-weight:400;">추후 공개 예정</span>
+              <span class="bank-num">010-741800-67207</span>
+              <button class="copy-num-btn" onclick="copyTxt('01074180067207')">복사</button>
             </div>
           </div>
           <div class="pay-row">
-            <button class="pay-btn btn-toss" onclick="toast('토스앱으로 연결합니다')"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M11.87 2C8.47 2 6 4.72 6 8.12v.52c0 .4.1.78.28 1.12L11.08 18c.4.78 1.2 1.26 2.06 1.26h.08c1.3 0 2.32-1.08 2.22-2.38l-.3-3.14h2.1c1.52 0 2.76-1.24 2.76-2.76V8.12C20 4.72 17.27 2 13.87 2h-2z" fill="white"/></svg>토스송금</button>
+            <button class="pay-btn btn-toss" onclick="toast('토스앱으로 연결합니다')"><svg width="16" height="16" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;display:block"><rect width="32" height="32" rx="8" fill="rgba(255,255,255,0.2)"/><path d="M9 10h14v3h-5.5v9h-3V13H9v-3z" fill="white"/></svg>토스페이</button>
             <button class="pay-btn btn-kakao" onclick="toast('카카오페이로 연결합니다')"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 3C7.03 3 3 6.36 3 10.5c0 2.67 1.67 5.02 4.18 6.4l-1.06 3.93c-.09.34.28.62.58.43L11.1 18.9c.29.04.59.06.9.06 4.97 0 9-3.36 9-7.5S16.97 3 12 3z" fill="#3A1D1D"/></svg>카카오페이</button>
           </div>
         </div>
@@ -1074,14 +1118,26 @@
 
   <!-- ═══ FOOTER ═══ -->
   <footer id="footer">
+    <div class="footer-cream-bridge"></div>
     <div class="footer-img-wrap">
       <img src="./images/footer_images.jpg" alt="Dongjin & Youngyeon">
     </div>
     <div class="footer-content">
-      <span class="footer-heart reveal">♥</span>
+      <!-- 손그림 느낌 아웃라인 하트 SVG -->
+      <svg class="footer-heart-icon reveal" width="54" height="50" viewBox="0 0 54 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M27 46 C26 45 5 31 5 17 C5 10.1 10.1 5 17 5 C21.4 5 25.2 7.3 27 10.8 C28.8 7.3 32.6 5 37 5 C43.9 5 49 10.1 49 17 C49 31 28 45 27 46 Z"
+          fill="none"
+          stroke="rgba(201,169,110,.60)"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          style="filter:drop-shadow(0 0 10px rgba(201,169,110,.18))"
+        />
+      </svg>
+
       <p class="footer-msg reveal d1">좋은 날, 좋은 사람들과<br>함께할 수 있어<br>더없이 행복합니다.<br><br>귀한 발걸음과 따뜻한 마음,<br>평생 간직하겠습니다.<br>감사합니다.</p>
       <div class="footer-rule reveal d2"></div>
-      <div class="reveal d3">
+      <div class="footer-kakao-wrap reveal d3">
         <button class="footer-kakao-btn" onclick="shareKakao()">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3C7.03 3 3 6.36 3 10.5c0 2.67 1.67 5.02 4.18 6.4l-1.06 3.93c-.09.34.28.62.58.43L11.1 18.9c.29.04.59.06.9.06 4.97 0 9-3.36 9-7.5S16.97 3 12 3z" fill="rgba(232,213,176,.8)"/></svg>
           카카오톡으로 공유하기
@@ -1095,21 +1151,43 @@
 </div><!-- /.page-wrapper -->
 
 <script>
+// ── 카카오 SDK 초기화 ──
+window.addEventListener('load', () => {
+  if (window.Kakao && !Kakao.isInitialized()) {
+    Kakao.init('f203fc391557984eafb84d869623d50f');
+  }
+});
+
 // ── 카카오톡 공유 ──
 function shareKakao() {
-  const url = window.location.href;
-  if (navigator.share) {
-    navigator.share({
-      title: '임동진 ♥ 박영연 결혼합니다',
-      text: '2026년 6월 27일 토요일 오전 11시 30분\n이룸웨딩컨벤션',
-      url: url
-    });
-  } else {
-    copyTxt(url);
-    toast('링크가 복사되었습니다');
+  if (!window.Kakao || !Kakao.isInitialized()) {
+    // SDK 미로드 fallback — 링크 복사
+    copyTxt(window.location.href, '링크가 복사되었습니다');
+    return;
   }
-}
 
+  Kakao.Share.sendDefault({
+    objectType: 'feed',
+    content: {
+      title: '임동진 ♥ 박영연 결혼합니다',
+      description: '2026년 6월 27일 토요일 오전 11시 30분\n이룸웨딩컨벤션 5F',
+      imageUrl: 'https://yoyoni.github.io/wedding_card/images/og_image.jpg',
+      link: {
+        mobileWebUrl: window.location.href,
+        webUrl: window.location.href,
+      },
+    },
+    buttons: [
+      {
+        title: '청첩장 보기',
+        link: {
+          mobileWebUrl: window.location.href,
+          webUrl: window.location.href,
+        },
+      },
+    ],
+  });
+}
 
 (function initCountdown() {
   const wedding = new Date('2026-06-27T11:30:00+09:00');
@@ -1388,20 +1466,27 @@ function toast(msg) {
 }
 
 /* ══ COPY ══ */
-function copyTxt(t) {
+function copyTxt(t, msg) {
+  const message = msg || '계좌번호가 복사되었습니다';
   navigator.clipboard.writeText(t)
-    .then(() => toast('계좌번호가 복사되었습니다'))
+    .then(() => toast(message))
     .catch(() => {
       const ta = document.createElement('textarea');
       ta.value = t; document.body.appendChild(ta);
       ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
-      toast('계좌번호가 복사되었습니다');
+      toast(message);
     });
 }
 function copyAddr(addr) {
   const text = addr || '서울 마포구 마포대로 78';
-  copyTxt(text);
-  toast('주소가 복사되었습니다');
+  navigator.clipboard.writeText(text)
+    .then(() => toast('주소가 복사되었습니다'))
+    .catch(() => {
+      const ta = document.createElement('textarea');
+      ta.value = text; document.body.appendChild(ta);
+      ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+      toast('주소가 복사되었습니다');
+    });
 }
 
 /* ══ TOUCH MICRO-INTERACTION ══ */
