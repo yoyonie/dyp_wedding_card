@@ -20,10 +20,10 @@
     font-display: swap;
   }
 
-  /* 2. WeddingSerif (원본: RIDI Batang) — 세리프 */
+  /* 2. WeddingSerif (원본: 교보손글씨) — 세리프 */
   @font-face {
     font-family: 'WeddingSerif';
-    src: url('./fonts/RIDIBatang.otf') format('opentype');
+    src: url('./fonts/KyoboHandwriting2020pdy.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -429,7 +429,7 @@
   #location { background:var(--ivory); }
 
   .venue-name { text-align:center; margin-bottom:22px; }
-  .venue-title { font-family:'WeddingSerif',serif; font-size:1.75rem; font-weight:700; color:var(--dark-brown); letter-spacing:.02em; }
+  .venue-title { font-family:'WeddingSerif',serif; font-size:1.75rem; font-weight:400; color:var(--dark-brown); letter-spacing:.02em; }
   .venue-sub { font-size:.85rem; color:var(--mid-brown); margin-top:6px; letter-spacing:.04em; font-weight:400; }
 
   /* 지도 iframe */
@@ -663,6 +663,9 @@
   }
 
   /* 어두운 콘텐츠 영역 */
+  /* footer 파티클 — hero와 동일 스타일 */
+  .footer-particles { position:absolute; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
+
   .footer-content {
     background:#12100D;
     padding:100px 28px 0;
@@ -672,7 +675,7 @@
 
   /* 하트 SVG 아이콘 — 점 없이 아웃라인만 */
   .footer-heart-icon {
-    display:block; margin:0 auto 32px;
+    display:block; margin:0 auto 0;
     animation: heartFloat 3.6s ease-in-out infinite;
     transform-origin: center center;
   }
@@ -680,6 +683,12 @@
     0%,100% { transform:translateY(0) scale(1);      opacity:.65; }
     35%      { transform:translateY(-6px) scale(1.07); opacity:.85; }
     65%      { transform:translateY(-2px) scale(1.02); opacity:.75; }
+  }
+
+  /* 하트 아래 문구 블록 — 충분한 간격 */
+  .footer-text-block {
+    margin-top:60px;
+    display:flex; flex-direction:column; align-items:center; width:100%;
   }
 
   /* 감사합니다 이후 여운 여백 충분히 */
@@ -1123,6 +1132,9 @@
       <img src="./images/footer_images.jpg" alt="Dongjin & Youngyeon">
     </div>
     <div class="footer-content">
+      <!-- 파티클 -->
+      <div class="footer-particles" id="footerParticles"></div>
+
       <!-- 손그림 느낌 아웃라인 하트 SVG -->
       <svg class="footer-heart-icon reveal" width="54" height="50" viewBox="0 0 54 50" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M27 46 C26 45 5 31 5 17 C5 10.1 10.1 5 17 5 C21.4 5 25.2 7.3 27 10.8 C28.8 7.3 32.6 5 37 5 C43.9 5 49 10.1 49 17 C49 31 28 45 27 46 Z"
@@ -1135,16 +1147,18 @@
         />
       </svg>
 
-      <p class="footer-msg reveal d1">좋은 날, 좋은 사람들과<br>함께할 수 있어<br>더없이 행복합니다.<br><br>귀한 발걸음과 따뜻한 마음,<br>평생 간직하겠습니다.<br>감사합니다.</p>
-      <div class="footer-rule reveal d2"></div>
-      <div class="footer-kakao-wrap reveal d3">
-        <button class="footer-kakao-btn" onclick="shareKakao()">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3C7.03 3 3 6.36 3 10.5c0 2.67 1.67 5.02 4.18 6.4l-1.06 3.93c-.09.34.28.62.58.43L11.1 18.9c.29.04.59.06.9.06 4.97 0 9-3.36 9-7.5S16.97 3 12 3z" fill="rgba(232,213,176,.8)"/></svg>
-          카카오톡으로 공유하기
-        </button>
-        <span class="footer-kakao-label">Share via KakaoTalk</span>
+      <div class="footer-text-block">
+        <p class="footer-msg reveal d1">좋은 날, 좋은 사람들과<br>함께할 수 있어<br>더없이 행복합니다.<br><br>귀한 발걸음과 따뜻한 마음,<br>평생 간직하겠습니다.<br>감사합니다.</p>
+        <div class="footer-rule reveal d2"></div>
+        <div class="footer-kakao-wrap reveal d3">
+          <button class="footer-kakao-btn" onclick="shareKakao()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3C7.03 3 3 6.36 3 10.5c0 2.67 1.67 5.02 4.18 6.4l-1.06 3.93c-.09.34.28.62.58.43L11.1 18.9c.29.04.59.06.9.06 4.97 0 9-3.36 9-7.5S16.97 3 12 3z" fill="rgba(232,213,176,.8)"/></svg>
+            카카오톡으로 공유하기
+          </button>
+          <span class="footer-kakao-label">Share via KakaoTalk</span>
+        </div>
+        <span class="footer-credit reveal d4">Designed with love by Yoyonie &nbsp;|&nbsp; DONGJIN &amp; YOUNGYEON</span>
       </div>
-      <span class="footer-credit reveal d4">Designed with love by Yoyonie &nbsp;|&nbsp; DONGJIN &amp; YOUNGYEON</span>
     </div>
   </footer>
 
@@ -1171,7 +1185,7 @@ function shareKakao() {
     content: {
       title: '임동진 ♥ 박영연 결혼합니다',
       description: '2026년 6월 27일 토요일 오전 11시 30분\n이룸웨딩컨벤션 5F',
-      imageUrl: 'https://yoyoni.github.io/wedding_card/images/og_image.jpg',
+      imageUrl: 'https://yoyonie.github.io/wedding_card/images/og_image.jpg',
       link: {
         mobileWebUrl: window.location.href,
         webUrl: window.location.href,
@@ -1282,7 +1296,24 @@ window.addEventListener('load', () => {
   }
 })();
 
-/* ══ STICKY HEADER + PROGRESS BAR ══ */
+/* ══ FOOTER PARTICLES ══ */
+(function() {
+  const c = document.getElementById('footerParticles');
+  if (!c) return;
+  for (let i = 0; i < 18; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const sz = Math.random() > .65 ? 3 : 2;
+    p.style.cssText = [
+      `left:${Math.random()*100}%`,
+      `width:${sz}px`, `height:${sz}px`,
+      `animation-duration:${8+Math.random()*10}s`,
+      `animation-delay:${Math.random()*10}s`,
+      `--dx:${(Math.random()-.5)*60}px`
+    ].join(';');
+    c.appendChild(p);
+  }
+})();
 const hdr = document.getElementById('sticky-header');
 const progressBar = document.getElementById('progress-bar');
 window.addEventListener('scroll', () => {
