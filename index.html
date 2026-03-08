@@ -333,7 +333,7 @@
   }
   .sec-title {
     font-family:'WeddingSerif',serif;
-    font-size:2rem; font-weight:700;
+    font-size:2rem; font-weight:400;
     text-align:center; color:var(--dark-brown);
     line-height:1.35; letter-spacing:.01em; margin-bottom:36px;
   }
@@ -407,9 +407,21 @@
   .cd.hl::after { content:'♥'; position:absolute; top:-9px; right:-5px; font-size:.48rem; color:#e87b7b; animation:hb 1.6s ease-in-out infinite; }
   @keyframes hb { 0%,100%{transform:scale(1);} 50%{transform:scale(1.4);} }
 
-  .date-badge { margin-top:22px; text-align:center; padding:20px; background:linear-gradient(135deg,rgba(201,169,110,.05),rgba(201,169,110,.10)); border-radius:var(--radius-lg); border:1px solid rgba(201,169,110,.14); }
+  .date-badge { margin-top:22px; text-align:center; padding:22px 20px; background:linear-gradient(135deg,rgba(201,169,110,.05),rgba(201,169,110,.10)); border-radius:var(--radius-lg); border:1px solid rgba(201,169,110,.14); }
   .date-badge-main { font-family:'WeddingSerif',serif; font-size:1.3rem; color:var(--dark-brown); font-weight:700; letter-spacing:.04em; }
-  .date-badge-time { font-size:.88rem; color:var(--mid-brown); margin-top:5px; letter-spacing:.06em; font-weight:400; }
+  .date-badge-time { font-family:'WeddingSerif',serif; font-size:1.3rem; color:var(--dark-brown); margin-top:4px; letter-spacing:.04em; font-weight:700; }
+  .date-badge-rule { width:28px; height:1px; background:linear-gradient(90deg,transparent,var(--gold-dark),transparent); margin:16px auto; }
+  .countdown-label { font-size:.78rem; color:var(--mid-brown); letter-spacing:.02em; margin-bottom:12px; word-break:keep-all; }
+  .countdown-wrap { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:4px; }
+  .countdown-box { background:#fff; border-radius:16px; border:1px solid var(--beige); padding:14px 8px; }
+  .countdown-num { font-family:'WeddingSerif',serif; font-size:1.8rem; font-weight:700; color:var(--dark-brown); line-height:1; letter-spacing:-.01em; }
+  .countdown-unit { font-size:.6rem; color:var(--light-brown); letter-spacing:.14em; margin-top:5px; text-transform:uppercase; }
+  .countdown-bottom { font-size:.78rem; color:var(--mid-brown); letter-spacing:.02em; margin-top:12px; }
+  .countdown-done-wrap { text-align:center; padding:8px 0; }
+  .countdown-done-eng { font-family:'WeddingScript',cursive; font-size:2.6rem; color:var(--gold); opacity:.85; line-height:1; margin-bottom:10px; display:block; }
+  .countdown-done-kor { font-size:.85rem; color:var(--mid-brown); line-height:2.0; word-break:keep-all; }
+  .countdown-done-heart { display:inline-block; color:var(--accent-rose,#C4856A); animation:hb 1.5s ease-in-out infinite; font-size:1rem; margin:0 2px; }
+  .countdown-done { font-family:'WeddingSerif',serif; font-size:1.1rem; color:var(--gold-dark); letter-spacing:.04em; }
 
   /* ══════════════════════════════
      LOCATION
@@ -420,25 +432,15 @@
   .venue-title { font-family:'WeddingSerif',serif; font-size:1.75rem; font-weight:700; color:var(--dark-brown); letter-spacing:.02em; }
   .venue-sub { font-size:.85rem; color:var(--mid-brown); margin-top:6px; letter-spacing:.04em; font-weight:400; }
 
-  /* 지도 비주얼 (CSS-only grid, no image required) */
+  /* 지도 iframe */
   .map-vis {
-    border-radius:var(--radius-lg); height:176px; margin-bottom:14px;
+    border-radius:var(--radius-lg); height:220px; margin-bottom:14px;
     position:relative; overflow:hidden;
-    background:linear-gradient(135deg,#EDE4D8,#D4C4B0);
     border:1px solid var(--beige-mid);
-    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
-    cursor:pointer;
-    /* 지도 썸네일 사용 시 아래 두 줄 주석 해제 후 경로 수정 */
-    /* background-image:url('./images/map_thumbnail.jpg'); */
-    /* background-size:cover; background-position:center; */
   }
-  /* CSS 격자 패턴 (base64 없이) */
-  .map-grid-overlay {
-    position:absolute; inset:0; pointer-events:none;
-    background-image:
-      linear-gradient(rgba(140,120,100,.12) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(140,120,100,.12) 1px, transparent 1px);
-    background-size:40px 40px;
+  .map-vis iframe {
+    width:100%; height:100%; border:none; display:block;
+    filter:saturate(0.85) brightness(1.02);
   }
   .map-rings {
     position:absolute; width:100px; height:100px; border-radius:50%;
@@ -470,7 +472,7 @@
   }
   .map-btn:hover  { box-shadow:var(--shadow-soft); border-color:var(--gold-light); transform:translateY(-2px); }
   .map-btn:active { transform:scale(.94); }
-  .map-btn-icon  { font-size:1.5rem; }
+  .map-btn-icon  { display:flex; align-items:center; justify-content:center; }
   .map-btn-label { font-size:.67rem; color:var(--mid-brown); letter-spacing:.04em; }
 
   .tabs { display:flex; gap:4px; background:#F0EAE2; border-radius:var(--radius-pill); padding:4px; border:1px solid var(--beige-mid); margin-bottom:14px; }
@@ -482,8 +484,24 @@
   .tab-panel.on { display:block; animation:tabIn .3s ease; }
   @keyframes tabIn { from{opacity:0;transform:translateY(5px);} to{opacity:1;transform:translateY(0);} }
 
-  .info-box { background:#fff; border-radius:var(--radius-lg); padding:20px 18px; border:1px solid var(--beige); font-size:.88rem; color:var(--mid-brown); line-height:1.95; font-weight:400; }
+  .info-box { background:#fff; border-radius:var(--radius-lg); padding:20px 18px; border:1px solid var(--beige); font-size:.88rem; color:var(--mid-brown); line-height:1.6; font-weight:400; }
   .info-box strong { color:var(--dark-brown); font-weight:600; }
+  .info-box .addr-copy-btn { display:inline-flex; align-items:center; gap:3px; padding:2px 8px; background:var(--ivory); border:1px solid var(--beige-mid); border-radius:var(--radius-pill); font-size:.58rem; color:var(--mid-brown); cursor:pointer; font-family:inherit; transition:all .2s ease; vertical-align:middle; margin-left:4px; white-space:nowrap; }
+  .info-box .addr-copy-btn:active { transform:scale(.93); }
+  .info-box .info-note { font-size:.78rem; color:var(--light-brown); line-height:1.7; margin-top:8px; }
+  .info-box .info-warn {
+    font-size:.78rem; color:#6B4C35; line-height:1.75; margin-top:10px;
+    padding:11px 14px;
+    background:linear-gradient(135deg, rgba(232,185,140,.13), rgba(220,168,110,.07));
+    border-radius:14px;
+    border:1px solid rgba(220,168,110,.28);
+    box-shadow:0 2px 8px rgba(180,120,60,.06);
+    text-align:left;
+    position:relative;
+  }
+  .info-box .info-warn-title { font-weight:600; margin-bottom:4px; display:block; font-size:.82rem; }
+  .info-box .info-section { line-height:1.6; margin-bottom:4px; }
+  .info-box .info-gap { display:block; height:12px; }
 
   /* ══════════════════════════════
      GALLERY — Bento Grid
@@ -530,7 +548,7 @@
   .more-btn:active { transform:scale(.94); }
 
   /* Lightbox */
-  #lightbox { position:fixed; inset:0; z-index:500; background:rgba(10,7,4,.96); display:flex; align-items:center; justify-content:center; opacity:0; visibility:hidden; transition:opacity .4s ease,visibility .4s ease; padding:24px; }
+  #lightbox { position:fixed; inset:0; z-index:500; background:rgba(10,7,4,.96); display:flex; align-items:center; justify-content:center; opacity:0; visibility:hidden; transition:opacity .4s ease,visibility .4s ease; padding:24px; touch-action:pan-y; }
   #lightbox.on { opacity:1; visibility:visible; }
   .lb-content { width:100%; max-width:380px; max-height:80vh; border-radius:var(--radius-xl); overflow:hidden; background:var(--beige); display:flex; align-items:center; justify-content:center; aspect-ratio:1; transform:scale(.85); transition:transform .5s cubic-bezier(.34,1.56,.64,1); }
   #lightbox.on .lb-content { transform:scale(1); }
@@ -539,7 +557,17 @@
   .lb-close { position:absolute; top:24px; right:24px; width:42px; height:42px; border-radius:50%; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12); color:#fff; font-size:1.1rem; display:flex; align-items:center; justify-content:center; cursor:pointer; backdrop-filter:blur(8px); transition:all .2s ease; }
   .lb-close:hover  { background:rgba(255,255,255,.14); }
   .lb-close:active { transform:scale(.9); }
+  .lb-nav { position:absolute; top:50%; transform:translateY(-50%); width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12); color:#fff; font-size:1.1rem; display:flex; align-items:center; justify-content:center; cursor:pointer; backdrop-filter:blur(8px); transition:all .25s cubic-bezier(.34,1.56,.64,1); user-select:none; }
+  .lb-nav:hover  { background:rgba(255,255,255,.18); transform:translateY(-50%) scale(1.08); }
+  .lb-nav:active { transform:translateY(-50%) scale(.92); }
+  .lb-prev { left:16px; }
+  .lb-next { right:16px; }
+  .lb-nav.disabled { opacity:.2; pointer-events:none; }
   .lb-count { position:absolute; bottom:28px; left:50%; transform:translateX(-50%); font-size:.62rem; letter-spacing:.18em; color:rgba(255,255,255,.4); }
+  .lb-slide-hint { position:absolute; bottom:52px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:6px; pointer-events:none; }
+  .lb-slide-line { width:28px; height:1px; background:linear-gradient(to right, transparent, rgba(201,169,110,.7), transparent); animation:slidePulse 1.8s ease-in-out infinite; }
+  @keyframes slidePulse { 0%,100%{ transform:scaleX(.6); opacity:.4; } 50%{ transform:scaleX(1); opacity:1; } }
+  .lb-slide-txt { font-size:.48rem; letter-spacing:.28em; color:rgba(201,169,110,.55); text-transform:uppercase; }
 
   /* ══════════════════════════════
      ACCOUNTS & GIFT
@@ -606,13 +634,39 @@
      FOOTER
   ══════════════════════════════ */
   #footer-fade { height:120px; background:linear-gradient(to bottom,var(--cream),#12100D); }
-  #footer { background:#12100D; padding:80px 28px 64px; text-align:center; position:relative; overflow:hidden; }
+  #footer { background:#12100D; text-align:center; position:relative; overflow:hidden; }
+  .footer-img-wrap {
+    position:relative;
+    height:320px; overflow:hidden;
+  }
+  .footer-img-wrap img {
+    width:100%; height:100%; object-fit:cover; object-position:center 30%; display:block;
+  }
+  .footer-img-wrap::after {
+    content:''; position:absolute; inset:0; z-index:1;
+    background:linear-gradient(to bottom, #12100D 0%, rgba(18,16,13,.2) 40%, rgba(18,16,13,.5) 75%, #12100D 100%);
+  }
+  .footer-content { padding:56px 28px 48px; position:relative; z-index:1; }
   .footer-heart { font-family:'WeddingScript',cursive; font-size:3.2rem; color:var(--gold); opacity:.65; margin-bottom:16px; display:block; }
   .footer-msg { font-size:.88rem; line-height:2.3; color:rgba(220,200,170,.70); font-weight:400; word-break:keep-all; max-width:270px; margin:0 auto; }
   .footer-rule { width:36px; height:1px; background:linear-gradient(90deg,transparent,var(--gold-dark),transparent); margin:30px auto; }
-  .footer-names { font-family:'WeddingScript',cursive; font-size:2.2rem; color:var(--gold); margin-bottom:10px; }
-  .footer-date-txt { font-size:.62rem; letter-spacing:.18em; color:rgba(201,169,110,.38); margin-bottom:32px; }
-  .footer-credit   { font-size:.52rem; letter-spacing:.18em; color:rgba(201,169,110,.22); text-transform:uppercase; }
+  .footer-kakao-btn {
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    color:rgba(232,213,176,.85);
+    border:1px solid rgba(201,169,110,.25);
+    border-radius:var(--radius-pill);
+    padding:13px 28px; font-size:.82rem; font-weight:400;
+    font-family:'WeddingSans',sans-serif; cursor:pointer; letter-spacing:.06em;
+    transition:all .25s cubic-bezier(.34,1.56,.64,1);
+    margin-bottom:6px;
+  }
+  .footer-kakao-btn:active { transform:scale(.95); }
+  .footer-kakao-btn:hover  { background:rgba(255,255,255,.14); border-color:rgba(201,169,110,.45); }
+  .footer-kakao-label { font-size:.56rem; letter-spacing:.16em; color:rgba(201,169,110,.28); text-transform:uppercase; margin-bottom:28px; display:block; }
+  .footer-credit { font-size:.52rem; letter-spacing:.18em; color:rgba(201,169,110,.22); text-transform:uppercase; margin-bottom:0; padding-bottom:48px; display:block; }
 
   /* ══════════════════════════════
      TOAST
@@ -627,6 +681,7 @@
     .hero-cursive-line2 { font-size:6rem; }
   }
 </style>
+<script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=9sc717mqtg"></script>
 </head>
 <body>
 
@@ -643,11 +698,17 @@
 <!-- LIGHTBOX -->
 <div id="lightbox">
   <div class="lb-close" onclick="closeLb()">✕</div>
+  <div class="lb-nav lb-prev" id="lbPrev" onclick="lbMove(-1)">‹</div>
   <div class="lb-content">
     <div class="lb-ph">
       <span>🖼️</span>
       <span id="lb-label">PHOTO</span>
     </div>
+  </div>
+  <div class="lb-nav lb-next" id="lbNext" onclick="lbMove(1)">›</div>
+  <div class="lb-slide-hint" id="lbSlideHint">
+    <div class="lb-slide-line"></div>
+    <div class="lb-slide-txt">Slide</div>
   </div>
   <div class="lb-count" id="lb-count"></div>
 </div>
@@ -758,6 +819,19 @@
       <div class="date-badge">
         <div class="date-badge-main">2026년 6월 27일 토요일</div>
         <div class="date-badge-time">오전 11시 30분</div>
+        <div class="date-badge-rule"></div>
+        <div class="countdown-label">동진과 영연의 결혼식이</div>
+        <div class="countdown-wrap" id="countdownWrap">
+          <div class="countdown-box">
+            <div class="countdown-num" id="cdDays">--</div>
+            <div class="countdown-unit">Days</div>
+          </div>
+          <div class="countdown-box">
+            <div class="countdown-num" id="cdHours">--</div>
+            <div class="countdown-unit">Hours</div>
+          </div>
+        </div>
+        <div class="countdown-bottom" id="countdownBottom">남았습니다.</div>
       </div>
     </div>
   </section>
@@ -769,22 +843,31 @@
       <div class="venue-title">이룸웨딩컨벤션</div>
       <div class="venue-sub">서울 마포구 마포대로 78 · 공덕역 · 5F</div>
     </div>
-    <div class="map-vis reveal d2" onclick="openMap('naver',null)">
-      <div class="map-grid-overlay"></div>
-      <div class="map-rings"></div>
-      <div class="map-pin-icon">📍</div>
-      <div class="map-label-txt">이룸웨딩컨벤션 · 공덕역</div>
-    </div>
+    <div id="naver-map" class="reveal d2" style="width:100%; height:220px; border-radius:var(--radius-lg); overflow:hidden; margin-bottom:14px; border:1px solid var(--beige-mid);"></div>
     <div class="addr-row reveal d2">
       <span class="addr-txt">서울 마포구 마포대로 78</span>
       <button class="copy-btn" onclick="copyAddr()">📋 복사</button>
     </div>
     <div class="map-btns reveal d3">
       <a class="map-btn" href="#" onclick="openMap('naver',event)">
-        <span class="map-btn-icon">🗺️</span><span class="map-btn-label">네이버 지도</span>
+        <span class="map-btn-icon">
+          <!-- 네이버 로고 -->
+          <svg width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <rect width="24" height="24" rx="5" fill="#03C75A"/>
+            <path d="M13.37 12.32L10.49 7.5H7.5V16.5H10.63V11.68L13.51 16.5H16.5V7.5H13.37V12.32Z" fill="white"/>
+          </svg>
+        </span>
+        <span class="map-btn-label">네이버 지도</span>
       </a>
       <a class="map-btn" href="#" onclick="openMap('kakao',event)">
-        <span class="map-btn-icon">🗺️</span><span class="map-btn-label">카카오 지도</span>
+        <span class="map-btn-icon">
+          <!-- 카카오 로고 -->
+          <svg width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <rect width="24" height="24" rx="5" fill="#FEE500"/>
+            <path d="M12 5.5C8.41 5.5 5.5 7.74 5.5 10.5c0 1.74 1.1 3.27 2.78 4.22l-.7 2.6c-.06.22.18.4.37.27l3.06-2.02c.32.04.65.06.99.06 3.59 0 6.5-2.24 6.5-5S15.59 5.5 12 5.5z" fill="#3A1D1D"/>
+          </svg>
+        </span>
+        <span class="map-btn-label">카카오 지도</span>
       </a>
     </div>
     <div class="reveal d3">
@@ -794,17 +877,41 @@
       </div>
       <div class="tab-panel on" id="tab-parking">
         <div class="info-box">
-          <strong>주차 가능</strong> · 건물 내 유료 주차장 이용<br>
-          주차 공간이 협소하오니 <strong>대중교통</strong> 이용을 권장드립니다.<br><br>
-          <strong>지하철</strong> · 5·6호선, 경의중앙선 공덕역<br>1번 또는 2번 출구에서 도보 약 3분<br><br>
-          <strong>버스</strong> · 공덕역(마포대로) 정류장 하차
+          🚗 <strong>자가용 이용 시</strong><br>
+          <span style="padding-left:1.2em"><svg width="8" height="8" viewBox="0 0 8 8" style="display:inline-block;vertical-align:middle;margin-right:5px;margin-bottom:1px"><circle cx="4" cy="4" r="2.5" fill="var(--gold-dark)" opacity="0.7"/></svg>건물 내 지하주차장 (B2~B7)</span>
+          <button class="addr-copy-btn" onclick="copyAddr('/* TODO: 건물 내 주차장 주소 입력 */')">📋 주소 복사</button><br>
+          <!-- TODO: 위 copyAddr 안의 주소를 실제 주소로 교체하세요 -->
+          <span style="padding-left:1.2em"><svg width="8" height="8" viewBox="0 0 8 8" style="display:inline-block;vertical-align:middle;margin-right:5px;margin-bottom:1px"><circle cx="4" cy="4" r="2.5" fill="var(--gold-dark)" opacity="0.7"/></svg>외부 공영주차장 (도보 8분)</span>
+          <button class="addr-copy-btn" onclick="copyAddr('/* TODO: 공영주차장 주소 입력 */')">📋 주소 복사</button><br>
+          <!-- TODO: 위 copyAddr 안의 주소를 실제 주소로 교체하세요 -->
+          <div class="info-warn" style="margin-top:8px;">
+            🅿️ 2시간 무료 주차 (이후 10분당 1,000원)
+          </div>
+          <div class="info-warn">
+            ⚠️ 주차장 입·출구가 동일한 길목입니다.<br>
+            <span style="padding-left:1.4em">출입구 근처가 다소 혼잡할 수 있으니,</span><br>
+            <span style="padding-left:1.4em">차량 이용 시 혼선에 유의해주시기 바랍니다.</span>
+          </div>
+          <span class="info-gap"></span>
+          <span class="info-gap"></span>
+          <span class="info-gap"></span>
+          🚇 <strong>지하철 이용 시</strong><br>
+          <span style="padding-left:1.2em"><svg width="8" height="8" viewBox="0 0 8 8" style="display:inline-block;vertical-align:middle;margin-right:5px;margin-bottom:1px"><circle cx="4" cy="4" r="2.5" fill="var(--gold-dark)" opacity="0.7"/></svg>5·6호선 공덕역 <strong>8번 출구</strong> (도보 4분)</span><br>
+          <span style="padding-left:1.2em"><svg width="8" height="8" viewBox="0 0 8 8" style="display:inline-block;vertical-align:middle;margin-right:5px;margin-bottom:1px"><circle cx="4" cy="4" r="2.5" fill="var(--gold-dark)" opacity="0.7"/></svg>공항철도·경의중앙선 공덕역 <strong>9번 출구</strong> (도보 3분)</span>
         </div>
       </div>
       <div class="tab-panel" id="tab-food">
         <div class="info-box">
-          <strong>예식 후 식사</strong>를 준비하였습니다.<br>5층 연회장에서 뷔페식으로 진행됩니다.<br><br>
-          <strong>식사 시간</strong> · 예식 종료 후 12시 30분부터<br><br>
-          참석 인원을 미리 알려주시면<br>더욱 원활한 준비에 도움이 됩니다. 🙏
+          🍴 <strong>식사 안내</strong><br>
+          <span class="info-gap"></span>
+          <span style="padding-left:1.2em"><svg width="8" height="8" viewBox="0 0 8 8" style="display:inline-block;vertical-align:middle;margin-right:5px;margin-bottom:1px"><circle cx="4" cy="4" r="2.5" fill="var(--gold-dark)" opacity="0.7"/></svg>연회장은 <strong>4층 또는 6층</strong>입니다. (당일 안내)</span><br>
+          <span style="padding-left:1.2em"><svg width="8" height="8" viewBox="0 0 8 8" style="display:inline-block;vertical-align:middle;margin-right:5px;margin-bottom:1px"><circle cx="4" cy="4" r="2.5" fill="var(--gold-dark)" opacity="0.7"/></svg>🍰 식사는 <strong>뷔페식</strong>으로 준비되어 있습니다.</span><br>
+          <span style="padding-left:1.2em"><svg width="8" height="8" viewBox="0 0 8 8" style="display:inline-block;vertical-align:middle;margin-right:5px;margin-bottom:1px"><circle cx="4" cy="4" r="2.5" fill="var(--gold-dark)" opacity="0.7"/></svg>🍷 음료 및 주류는 자유롭게 이용하실 수 있습니다.</span><br>
+          <span class="info-gap"></span>
+          <div style="text-align:center; padding:10px 0 4px;">
+            <span style="font-family:'WeddingSerif',serif; font-size:.95rem; color:var(--dark-brown); letter-spacing:.04em; line-height:1.9; display:block;">자리를 빛내주셔서 감사합니다.</span>
+            <span style="font-family:'WeddingSerif',serif; font-size:.95rem; color:var(--dark-brown); letter-spacing:.04em; line-height:1.9; display:block;">맛있게 식사하시고 편안한 시간 보내세요.</span>
+          </div>
         </div>
       </div>
     </div>
@@ -831,21 +938,21 @@
       <!-- 신랑측 -->
       <div class="acc-item reveal d2" id="acc-groom">
         <div class="acc-header" onclick="toggleAcc('groom')">
-          <div><div class="acc-title">🤵 신랑측 계좌번호</div><div class="acc-sub">임동진 · 임경수 · 고승희</div></div>
+          <div><div class="acc-title">🤵 신랑측 계좌번호</div></div>
           <div class="acc-chevron">∨</div>
         </div>
         <div class="acc-body">
           <div class="bank-row">
-            <div class="bank-name">신한은행 · 임동진</div>
-            <div class="bank-num-row"><span class="bank-num">110-123-456789</span><button class="copy-num-btn" onclick="copyTxt('110-123-456789')">복사</button></div>
+            <div class="bank-name">국민은행 · 임동진</div>
+            <div class="bank-num-row"><span class="bank-num">772002-04-255026</span><button class="copy-num-btn" onclick="copyTxt('77200204255026')">복사</button></div>
           </div>
           <div class="bank-row">
-            <div class="bank-name">국민은행 · 임경수 (부)</div>
-            <div class="bank-num-row"><span class="bank-num">123-4567-8901-23</span><button class="copy-num-btn" onclick="copyTxt('123-4567-8901-23')">복사</button></div>
+            <div class="bank-name">우리은행 · 임경수 (부)</div>
+            <div class="bank-num-row"><span class="bank-num">1002-733-680397</span><button class="copy-num-btn" onclick="copyTxt('1002733680397')">복사</button></div>
           </div>
           <div class="bank-row">
-            <div class="bank-name">신한은행 · 고승희 (모)</div>
-            <div class="bank-num-row"><span class="bank-num">110-987-654321</span><button class="copy-num-btn" onclick="copyTxt('110-987-654321')">복사</button></div>
+            <div class="bank-name">국민은행 · 고승희 (모)</div>
+            <div class="bank-num-row"><span class="bank-num">772-21-0091-724</span><button class="copy-num-btn" onclick="copyTxt('772210091724')">복사</button></div>
           </div>
           <div class="pay-row">
             <button class="pay-btn btn-toss" onclick="toast('토스앱으로 연결합니다')"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M11.87 2C8.47 2 6 4.72 6 8.12v.52c0 .4.1.78.28 1.12L11.08 18c.4.78 1.2 1.26 2.06 1.26h.08c1.3 0 2.32-1.08 2.22-2.38l-.3-3.14h2.1c1.52 0 2.76-1.24 2.76-2.76V8.12C20 4.72 17.27 2 13.87 2h-2z" fill="white"/></svg>토스송금</button>
@@ -857,21 +964,27 @@
       <!-- 신부측 -->
       <div class="acc-item reveal d3" id="acc-bride">
         <div class="acc-header" onclick="toggleAcc('bride')">
-          <div><div class="acc-title">👰 신부측 계좌번호</div><div class="acc-sub">박영연 · 박성균 · 정현용</div></div>
+          <div><div class="acc-title">👰 신부측 계좌번호</div></div>
           <div class="acc-chevron">∨</div>
         </div>
         <div class="acc-body">
           <div class="bank-row">
-            <div class="bank-name">카카오뱅크 · 박영연</div>
-            <div class="bank-num-row"><span class="bank-num">3333-098-7654321</span><button class="copy-num-btn" onclick="copyTxt('3333-098-7654321')">복사</button></div>
+            <div class="bank-name">우리은행 · 박영연</div>
+            <div class="bank-num-row"><span class="bank-num">1002-162-137989</span><button class="copy-num-btn" onclick="copyTxt('1002162137989')">복사</button></div>
           </div>
           <div class="bank-row">
             <div class="bank-name">우리은행 · 박성균 (부)</div>
-            <div class="bank-num-row"><span class="bank-num">1002-987-654321</span><button class="copy-num-btn" onclick="copyTxt('1002-987-654321')">복사</button></div>
+            <div class="bank-num-row"><span class="bank-num">1002-849-555777</span><button class="copy-num-btn" onclick="copyTxt('1002849555777')">복사</button></div>
           </div>
           <div class="bank-row">
-            <div class="bank-name">우리은행 · 정현용 (모)</div>
-            <div class="bank-num-row"><span class="bank-num">1002-111-222333</span><button class="copy-num-btn" onclick="copyTxt('1002-111-222333')">복사</button></div>
+            <div class="bank-name">○○은행 · 정현용 (모)</div>
+            <div class="bank-num-row">
+              <!-- TODO: 신부 어머니(정현용) 계좌번호 입력 후 아래 주석 해제
+              <span class="bank-num">계좌번호 입력</span>
+              <button class="copy-num-btn" onclick="copyTxt('계좌번호입력')">복사</button>
+              -->
+              <span class="bank-num" style="color:var(--light-brown); font-size:.78rem; font-weight:400;">추후 공개 예정</span>
+            </div>
           </div>
           <div class="pay-row">
             <button class="pay-btn btn-toss" onclick="toast('토스앱으로 연결합니다')"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M11.87 2C8.47 2 6 4.72 6 8.12v.52c0 .4.1.78.28 1.12L11.08 18c.4.78 1.2 1.26 2.06 1.26h.08c1.3 0 2.32-1.08 2.22-2.38l-.3-3.14h2.1c1.52 0 2.76-1.24 2.76-2.76V8.12C20 4.72 17.27 2 13.87 2h-2z" fill="white"/></svg>토스송금</button>
@@ -961,17 +1074,107 @@
 
   <!-- ═══ FOOTER ═══ -->
   <footer id="footer">
-    <span class="footer-heart reveal">♥</span>
-    <p class="footer-msg reveal d1">좋은 날, 좋은 사람들과<br>함께할 수 있어<br>더없이 행복합니다.<br><br>귀한 발걸음과 따뜻한 마음,<br>평생 간직하겠습니다.<br>감사합니다.</p>
-    <div class="footer-rule reveal d2"></div>
-    <div class="footer-names reveal d3">Dongjin &amp; Youngyeon</div>
-    <div class="footer-date-txt reveal d3">2026 · 06 · 27</div>
-    <div class="footer-credit reveal d4">Designed with love by Yoyoni · © 2026 Lim &amp; Park</div>
+    <div class="footer-img-wrap">
+      <img src="./images/footer_images.jpg" alt="Dongjin & Youngyeon">
+    </div>
+    <div class="footer-content">
+      <span class="footer-heart reveal">♥</span>
+      <p class="footer-msg reveal d1">좋은 날, 좋은 사람들과<br>함께할 수 있어<br>더없이 행복합니다.<br><br>귀한 발걸음과 따뜻한 마음,<br>평생 간직하겠습니다.<br>감사합니다.</p>
+      <div class="footer-rule reveal d2"></div>
+      <div class="reveal d3">
+        <button class="footer-kakao-btn" onclick="shareKakao()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3C7.03 3 3 6.36 3 10.5c0 2.67 1.67 5.02 4.18 6.4l-1.06 3.93c-.09.34.28.62.58.43L11.1 18.9c.29.04.59.06.9.06 4.97 0 9-3.36 9-7.5S16.97 3 12 3z" fill="rgba(232,213,176,.8)"/></svg>
+          카카오톡으로 공유하기
+        </button>
+        <span class="footer-kakao-label">Share via KakaoTalk</span>
+      </div>
+      <span class="footer-credit reveal d4">Designed with love by Yoyonie &nbsp;|&nbsp; DONGJIN &amp; YOUNGYEON</span>
+    </div>
   </footer>
 
 </div><!-- /.page-wrapper -->
 
 <script>
+// ── 카카오톡 공유 ──
+function shareKakao() {
+  const url = window.location.href;
+  if (navigator.share) {
+    navigator.share({
+      title: '임동진 ♥ 박영연 결혼합니다',
+      text: '2026년 6월 27일 토요일 오전 11시 30분\n이룸웨딩컨벤션',
+      url: url
+    });
+  } else {
+    copyTxt(url);
+    toast('링크가 복사되었습니다');
+  }
+}
+
+
+(function initCountdown() {
+  const wedding = new Date('2026-06-27T11:30:00+09:00');
+
+  function update() {
+    const now = new Date();
+    const diff = wedding - now;
+
+    if (diff <= 0) {
+      const bottom = document.getElementById('countdownBottom');
+      const label  = document.querySelector('.countdown-label');
+      if (bottom) bottom.style.display = 'none';
+      if (label)  label.style.display  = 'none';
+      document.getElementById('countdownWrap').innerHTML = `
+        <div class="countdown-done-wrap" style="grid-column:1/-1;">
+          <span class="countdown-done-eng">D-Day</span>
+          <p class="countdown-done-kor">
+            동진과 영연,<br>
+            오늘 하나가 됩니다.<span class="countdown-done-heart">♥</span><br>
+            함께해 주셔서 감사합니다.
+          </p>
+        </div>`;
+      return;
+    }
+
+    const days  = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+    document.getElementById('cdDays').textContent  = days;
+    document.getElementById('cdHours').textContent = hours;
+  }
+
+  update();
+  setInterval(update, 60000);
+})();
+window.addEventListener('load', function() {
+  if (typeof naver === 'undefined') return;
+  var coords = new naver.maps.LatLng(37.54399, 126.95188);
+  var map = new naver.maps.Map('naver-map', {
+    center: coords,
+    zoom: 17,
+    mapTypeControl: false,
+    zoomControl: false,
+    scaleControl: false,
+    logoControl: false,
+    mapDataControl: false,
+  });
+  var marker = new naver.maps.Marker({
+    position: coords,
+    map: map,
+    title: '이룸웨딩컨벤션'
+  });
+  var infoWindow = new naver.maps.InfoWindow({
+    content: '<div style="padding:8px 12px;font-size:0.75rem;font-family:sans-serif;color:#2C2826;white-space:nowrap;">📍 이룸웨딩컨벤션 5F</div>',
+    borderWidth: 0,
+    backgroundColor: '#FAF7F2',
+    borderRadius: '10px',
+    boxShadow: '0 4px 16px rgba(0,0,0,0.12)'
+  });
+  infoWindow.open(map, marker);
+  naver.maps.Event.addListener(marker, 'click', function() {
+    if (infoWindow.getMap()) infoWindow.close();
+    else infoWindow.open(map, marker);
+  });
+});
 /* ══ LOADING ══ */
 window.addEventListener('load', () => {
   setTimeout(() => {
@@ -1092,7 +1295,7 @@ let moreOpen = false;
     const isHidden = i >= 9;
     const item = document.createElement('div');
     item.className = 'bento-item' + (isHidden ? ' gallery-hidden' : '');
-    item.onclick = () => openLb(i + 1, 15);
+    item.onclick = () => openLb(i + 1);
     const inner = document.createElement('div');
     inner.className = 'bento-inner';
     inner.innerHTML = `<span>${emojis[i % emojis.length]}</span><span class="bento-num">${i+1}</span>`;
@@ -1114,19 +1317,65 @@ function toggleMore() {
 }
 
 /* ══ LIGHTBOX ══ */
-function openLb(n, total) {
+let lbCurrent = 1;
+const lbTotal  = 15;
+
+function lbRender(n) {
+  lbCurrent = n;
   document.getElementById('lb-label').textContent = `PHOTO ${n}`;
-  document.getElementById('lb-count').textContent  = `${n} / ${total}`;
+  document.getElementById('lb-count').textContent  = `${n} / ${lbTotal}`;
+  document.getElementById('lbPrev').classList.toggle('disabled', n <= 1);
+  document.getElementById('lbNext').classList.toggle('disabled', n >= lbTotal);
+}
+
+function openLb(n) {
+  lbRender(n);
   document.getElementById('lightbox').classList.add('on');
   document.body.style.overflow = 'hidden';
 }
+
+function lbMove(dir) {
+  const next = lbCurrent + dir;
+  if (next < 1 || next > lbTotal) return;
+  const content = document.querySelector('.lb-content');
+  content.style.transition = 'none';
+  content.style.transform  = `scale(.85) translateX(${dir * -30}px)`;
+  content.style.opacity    = '0';
+  setTimeout(() => {
+    lbRender(next);
+    content.style.transition = 'transform .4s cubic-bezier(.34,1.56,.64,1), opacity .3s ease';
+    content.style.transform  = 'scale(1) translateX(0)';
+    content.style.opacity    = '1';
+  }, 150);
+}
+
 function closeLb() {
   document.getElementById('lightbox').classList.remove('on');
   document.body.style.overflow = '';
 }
+
 document.getElementById('lightbox').addEventListener('click', function(e) {
   if (e.target === this) closeLb();
 });
+
+// 키보드 화살표
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('on')) return;
+  if (e.key === 'ArrowLeft')  lbMove(-1);
+  if (e.key === 'ArrowRight') lbMove(1);
+  if (e.key === 'Escape')     closeLb();
+});
+
+// 스와이프 제스처
+(function lbSwipe() {
+  const lb = document.getElementById('lightbox');
+  let startX = 0;
+  lb.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive:true });
+  lb.addEventListener('touchend',   e => {
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 50) lbMove(dx < 0 ? 1 : -1);
+  }, { passive:true });
+})();
 
 /* ══ TOAST ══ */
 let toastTimer;
@@ -1149,7 +1398,11 @@ function copyTxt(t) {
       toast('계좌번호가 복사되었습니다');
     });
 }
-function copyAddr() { copyTxt('서울 마포구 마포대로 78'); toast('주소가 복사되었습니다'); }
+function copyAddr(addr) {
+  const text = addr || '서울 마포구 마포대로 78';
+  copyTxt(text);
+  toast('주소가 복사되었습니다');
+}
 
 /* ══ TOUCH MICRO-INTERACTION ══ */
 document.querySelectorAll('button, .map-btn, .contact-card').forEach(el => {
