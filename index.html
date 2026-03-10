@@ -5,14 +5,14 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>">
 <!-- Open Graph -->
 <meta property="og:type"        content="website">
-<meta property="og:title"       content="저희 결혼합니다 !  (동진 ♥ 영연)">
-<meta property="og:description" content="2026년 6월 27일 토요일 오전 11시 30분 · 이룸웨딩컨벤션 5F">
+<meta property="og:title"       content="영연 ♡ 동진 — 결혼합니다">
+<meta property="og:description" content="2026년 6월 27일 토요일 11:30 ｜공덕 이룸웨딩컨벤션">
 <meta property="og:image"       content="https://yoyonie.github.io/wedding-card/images/og_image.jpg">
 <meta property="og:image:width"  content="800">
 <meta property="og:image:height" content="400">
 <meta property="og:url"         content="https://yoyonie.github.io/wedding-card/">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>저희 결혼합니다 !  (동진 ♥ 영연)</title>
+<title>영연 ♡ 동진 — 결혼합니다</title>
 
 <style>
   /* ══════════════════════════════
@@ -518,15 +518,18 @@
   ══════════════════════════════ */
   #gallery { background:var(--warm-white); padding-bottom:56px; }
 
-  /* 균일한 3×6 그리드 (PC에서도 480px로 고정) */
   .bento { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; margin-top:28px; }
   .bento-item { border-radius:12px; overflow:hidden; cursor:pointer; position:relative; aspect-ratio:1; background:var(--beige); }
   .bento-item:active { opacity:.8; }
 
-  .bento-inner { width:100%; height:100%; position:relative; }
-  .bento-inner img { width:100%; height:100%; object-fit:cover; display:block; will-change:auto; }
+  /* background-image 방식 — 브라우저 파싱 즉시 병렬 로드 */
+  .bento-inner {
+    width:100%; height:100%;
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+  }
 
-  /* 더보기 행들은 숨김 — display:none 대신 height:0으로 부드럽게 */
   .gallery-hidden { display:none; }
   .gallery-hidden.show { display:block; }
 
@@ -566,8 +569,7 @@
   .acc-sub   { font-size:.72rem; color:var(--light-brown); margin-top:2px; letter-spacing:.04em; font-weight:400; }
   .acc-chevron { width:28px; height:28px; background:var(--ivory); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:.75rem; color:var(--mid-brown); transition:transform .4s cubic-bezier(.34,1.56,.64,1); flex-shrink:0; }
   .acc-item.open .acc-chevron { transform:rotate(180deg); }
-  .acc-body { max-height:0; overflow:hidden; padding:0 18px; transition:max-height .5s cubic-bezier(.16,1,.3,1),padding .3s ease; }
-  .acc-item.open .acc-body { max-height:520px; padding:0 18px 20px; }
+  .acc-body { max-height:0; overflow:hidden; padding:0 18px; transition:max-height .45s cubic-bezier(.16,1,.3,1), padding .35s ease; }
 
   .bank-row { background:var(--ivory); border-radius:16px; padding:15px; margin-bottom:10px; }
   .bank-name { font-size:.62rem; color:var(--light-brown); letter-spacing:.1em; margin-bottom:5px; }
@@ -713,6 +715,21 @@
   #toast { position:fixed; bottom:32px; left:50%; transform:translateX(-50%) translateY(16px); background:#1E1A17; color:#fff; padding:12px 24px; border-radius:var(--radius-pill); font-size:.76rem; letter-spacing:.04em; opacity:0; transition:all .38s cubic-bezier(.34,1.56,.64,1); z-index:600; white-space:nowrap; pointer-events:none; border:1px solid rgba(255,255,255,.06); }
   #toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
 
+  /* ══ 빠른 송금 바텀시트 ══ */
+  #pay-sheet-backdrop { position:fixed; inset:0; z-index:700; background:rgba(0,0,0,0); pointer-events:none; transition:background .3s ease; }
+  #pay-sheet-backdrop.on { background:rgba(0,0,0,.45); pointer-events:all; }
+  #pay-sheet { position:fixed; bottom:0; left:50%; transform:translateX(-50%) translateY(100%); width:100%; max-width:480px; z-index:701; background:#fff; border-radius:24px 24px 0 0; padding:0 20px 36px; box-shadow:0 -8px 40px rgba(0,0,0,.12); transition:transform .38s cubic-bezier(.16,1,.3,1); }
+  #pay-sheet.on { transform:translateX(-50%) translateY(0); }
+  .ps-handle { width:36px; height:4px; background:var(--beige-mid); border-radius:4px; margin:12px auto 20px; }
+  .ps-title { font-size:.7rem; letter-spacing:.18em; color:var(--light-brown); text-align:center; margin-bottom:6px; }
+  .ps-account { font-size:.95rem; font-weight:700; color:var(--dark-brown); text-align:center; letter-spacing:.04em; margin-bottom:4px; }
+  .ps-bank { font-size:.72rem; color:var(--mid-brown); text-align:center; margin-bottom:20px; }
+  .ps-btns { display:grid; grid-template-columns:1fr; gap:10px; }
+  .ps-btn { padding:15px 8px; border-radius:var(--radius-pill); border:none; font-size:.82rem; font-family:'WeddingSans',sans-serif; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; transition:transform .2s cubic-bezier(.34,1.56,.64,1), opacity .2s; }
+  .ps-btn:active { transform:scale(.93); opacity:.85; }
+  .ps-kakao { background:#FEE500; color:#3A1D1D; }
+  .ps-cancel { margin-top:10px; width:100%; padding:14px; border:none; background:transparent; font-size:.8rem; color:var(--light-brown); cursor:pointer; font-family:inherit; }
+
   button, a { -webkit-tap-highlight-color:transparent; }
 
   @media (max-width:360px) {
@@ -736,6 +753,22 @@
 <div id="toast"></div>
 
 <!-- LIGHTBOX -->
+<!-- 빠른 송금 바텀시트 -->
+<div id="pay-sheet-backdrop" onclick="closePaySheet()"></div>
+<div id="pay-sheet">
+  <div class="ps-handle"></div>
+  <div class="ps-title">빠른 송금하기</div>
+  <div class="ps-account" id="ps-account"></div>
+  <div class="ps-bank" id="ps-bank"></div>
+  <div class="ps-btns">
+    <button type="button" class="ps-btn ps-kakao" onclick="openKakao()">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M12 3C7.03 3 3 6.36 3 10.5c0 2.67 1.67 5.02 4.18 6.4l-1.06 3.93c-.09.34.28.62.58.43L11.1 18.9c.29.04.59.06.9.06 4.97 0 9-3.36 9-7.5S16.97 3 12 3z" fill="#3A1D1D"/></svg>
+      카카오페이로 송금하기
+    </button>
+  </div>
+  <button type="button" class="ps-cancel" onclick="closePaySheet()">취소</button>
+</div>
+
 <div id="lightbox">
   <div class="lb-close" onclick="closeLb()">✕</div>
   <div class="lb-nav lb-prev" id="lbPrev" onclick="lbMove(-1)">‹</div>
@@ -765,15 +798,15 @@
     <!-- 신부·신랑 이름 — 상단 고정 -->
     <div class="hero-names" id="heroNames">
       <div class="hero-name-item">
-        <span class="hero-name-role">신 부</span>
-        <span class="hero-name-txt">영 연</span>
+        <span class="hero-name-role">신 랑</span>
+        <span class="hero-name-txt">동 진</span>
       </div>
       <div class="hero-name-sep">
         <span class="sep-flower">✿</span>
       </div>
       <div class="hero-name-item">
-        <span class="hero-name-role">신 랑</span>
-        <span class="hero-name-txt">동 진</span>
+        <span class="hero-name-role">신 부</span>
+        <span class="hero-name-txt">영 연</span>
       </div>
     </div>
 
@@ -953,7 +986,26 @@
   <section id="gallery">
     <div class="eyebrow reveal">Our Moment</div>
     <h2 class="sec-title reveal d1">함께한 시간들</h2>
-    <div class="bento reveal d2" id="bentoGrid"></div>
+    <div class="bento reveal d2" id="bentoGrid">
+      <div class="bento-item" onclick="openLb(1)"><div class="bento-inner" style="background-image:url('./images/gallery_01.webp')"></div><div class="bento-overlay"><span class="bento-overlay-icon">🔍</span></div></div>
+      <div class="bento-item" onclick="openLb(2)"><div class="bento-inner" style="background-image:url('./images/gallery_02.webp')"></div><div class="bento-overlay"><span class="bento-overlay-icon">🔍</span></div></div>
+      <div class="bento-item" onclick="openLb(3)"><div class="bento-inner" style="background-image:url('./images/gallery_03.webp')"></div><div class="bento-overlay"><span class="bento-overlay-icon">🔍</span></div></div>
+      <div class="bento-item" onclick="openLb(4)"><div class="bento-inner" style="background-image:url('./images/gallery_04.webp')"></div><div class="bento-overlay"><span class="bento-overlay-icon">🔍</span></div></div>
+      <div class="bento-item" onclick="openLb(5)"><div class="bento-inner" style="background-image:url('./images/gallery_05.webp')"></div><div class="bento-overlay"><span class="bento-overlay-icon">🔍</span></div></div>
+      <div class="bento-item" onclick="openLb(6)"><div class="bento-inner" style="background-image:url('./images/gallery_06.webp')"></div><div class="bento-overlay"><span class="bento-overlay-icon">🔍</span></div></div>
+      <div class="bento-item" onclick="openLb(7)"><div class="bento-inner" style="background-image:url('./images/gallery_07.webp')"></div><div class="bento-overlay"><span class="bento-overlay-icon">🔍</span></div></div>
+      <div class="bento-item" onclick="openLb(8)"><div class="bento-inner" style="background-image:url('./images/gallery_08.webp')"></div><div class="bento-overlay"><span class="bento-overlay-icon">🔍</span></div></div>
+      <div class="bento-item" onclick="openLb(9)"><div class="bento-inner" style="background-image:url('./images/gallery_09.webp')"></div><div class="bento-overlay"><span class="bento-overlay-icon">🔍</span></div></div>
+      <div class="bento-item gallery-hidden" onclick="openLb(10)"><div class="bento-inner" style="background-image:url('./images/gallery_10.webp')"></div><div class="bento-overlay"><span class="bento-overlay-icon">🔍</span></div></div>
+      <div class="bento-item gallery-hidden" onclick="openLb(11)"><div class="bento-inner" style="background-image:url('./images/gallery_11.webp')"></div><div class="bento-overlay"><span class="bento-overlay-icon">🔍</span></div></div>
+      <div class="bento-item gallery-hidden" onclick="openLb(12)"><div class="bento-inner" style="background-image:url('./images/gallery_12.webp')"></div><div class="bento-overlay"><span class="bento-overlay-icon">🔍</span></div></div>
+      <div class="bento-item gallery-hidden" onclick="openLb(13)"><div class="bento-inner" style="background-image:url('./images/gallery_13.webp')"></div><div class="bento-overlay"><span class="bento-overlay-icon">🔍</span></div></div>
+      <div class="bento-item gallery-hidden" onclick="openLb(14)"><div class="bento-inner" style="background-image:url('./images/gallery_14.webp')"></div><div class="bento-overlay"><span class="bento-overlay-icon">🔍</span></div></div>
+      <div class="bento-item gallery-hidden" onclick="openLb(15)"><div class="bento-inner" style="background-image:url('./images/gallery_15.webp')"></div><div class="bento-overlay"><span class="bento-overlay-icon">🔍</span></div></div>
+      <div class="bento-item gallery-hidden" onclick="openLb(16)"><div class="bento-inner" style="background-image:url('./images/gallery_16.webp')"></div><div class="bento-overlay"><span class="bento-overlay-icon">🔍</span></div></div>
+      <div class="bento-item gallery-hidden" onclick="openLb(17)"><div class="bento-inner" style="background-image:url('./images/gallery_17.webp')"></div><div class="bento-overlay"><span class="bento-overlay-icon">🔍</span></div></div>
+      <div class="bento-item gallery-hidden" onclick="openLb(18)"><div class="bento-inner" style="background-image:url('./images/gallery_18.webp')"></div><div class="bento-overlay"><span class="bento-overlay-icon">🔍</span></div></div>
+    </div>
     <div style="text-align:center;">
       <button type="button" class="more-btn" onclick="toggleMore()">
         <span id="moreIcon">＋</span><span id="moreTxt">더보기</span>
@@ -976,7 +1028,7 @@
         <div class="acc-body">
           <div class="bank-row">
             <div class="bank-name">국민은행 · 임동진</div>
-            <div class="bank-num-row"><span class="bank-num">772002-04-255026</span><button type="button" class="copy-num-btn" onclick="copyTxt('77200204255026')">복사</button></div>
+            <div class="bank-num-row"><span class="bank-num">772002-04-255026</span><button type="button" class="copy-num-btn" onclick="openPaySheet('772002-04-255026','77200204255026','국민은행 · 임동진')">복사</button></div>
           </div>
           <div class="bank-row">
             <div class="bank-name">우리은행 · 임경수 (부)</div>
@@ -985,10 +1037,6 @@
           <div class="bank-row">
             <div class="bank-name">국민은행 · 고승희 (모)</div>
             <div class="bank-num-row"><span class="bank-num">772-21-0091-724</span><button type="button" class="copy-num-btn" onclick="copyTxt('772210091724')">복사</button></div>
-          </div>
-          <div class="pay-row">
-            <button type="button" class="pay-btn btn-toss" onclick="toast('토스앱으로 연결합니다')"><svg width="16" height="16" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;display:block"><rect width="32" height="32" rx="8" fill="rgba(255,255,255,0.2)"/><path d="M9 10h14v3h-5.5v9h-3V13H9v-3z" fill="white"/></svg>토스페이</button>
-            <button type="button" class="pay-btn btn-kakao" onclick="toast('카카오페이로 연결합니다')"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 3C7.03 3 3 6.36 3 10.5c0 2.67 1.67 5.02 4.18 6.4l-1.06 3.93c-.09.34.28.62.58.43L11.1 18.9c.29.04.59.06.9.06 4.97 0 9-3.36 9-7.5S16.97 3 12 3z" fill="#3A1D1D"/></svg>카카오페이</button>
           </div>
         </div>
       </div>
@@ -1002,7 +1050,7 @@
         <div class="acc-body">
           <div class="bank-row">
             <div class="bank-name">우리은행 · 박영연</div>
-            <div class="bank-num-row"><span class="bank-num">1002-162-137989</span><button type="button" class="copy-num-btn" onclick="copyTxt('1002162137989')">복사</button></div>
+            <div class="bank-num-row"><span class="bank-num">1002-162-137989</span><button type="button" class="copy-num-btn" onclick="openPaySheet('1002-162-137989','1002162137989','우리은행 · 박영연')">복사</button></div>
           </div>
           <div class="bank-row">
             <div class="bank-name">우리은행 · 박성균 (부)</div>
@@ -1015,20 +1063,15 @@
               <button type="button" class="copy-num-btn" onclick="copyTxt('01074180067207')">복사</button>
             </div>
           </div>
-          <div class="pay-row">
-            <button type="button" class="pay-btn btn-toss" onclick="toast('토스앱으로 연결합니다')"><svg width="16" height="16" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;display:block"><rect width="32" height="32" rx="8" fill="rgba(255,255,255,0.2)"/><path d="M9 10h14v3h-5.5v9h-3V13H9v-3z" fill="white"/></svg>토스페이</button>
-            <button type="button" class="pay-btn btn-kakao" onclick="toast('카카오페이로 연결합니다')"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 3C7.03 3 3 6.36 3 10.5c0 2.67 1.67 5.02 4.18 6.4l-1.06 3.93c-.09.34.28.62.58.43L11.1 18.9c.29.04.59.06.9.06 4.97 0 9-3.36 9-7.5S16.97 3 12 3z" fill="#3A1D1D"/></svg>카카오페이</button>
-          </div>
         </div>
       </div>
-    </div>
 
     <!-- 연락처 -->
     <div class="contact-sec reveal d4">
       <div class="contact-label">Contact</div>
       <!-- 신랑 신부 -->
       <div class="contact-grid">
-        <a href="tel:010-1234-5678" class="contact-card">
+        <a href="tel:010-5369-4637" class="contact-card">
           <div class="cc-role">Groom</div>
           <div class="cc-name">임 동 진</div>
           <div class="cc-call-icon">
@@ -1037,7 +1080,7 @@
             </svg>
           </div>
         </a>
-        <a href="tel:010-8765-4321" class="contact-card">
+        <a href="tel:010-5873-0013" class="contact-card">
           <div class="cc-role">Bride</div>
           <div class="cc-name">박 영 연</div>
           <div class="cc-call-icon">
@@ -1057,7 +1100,7 @@
         </button>
         <div class="contact-parents-body" id="contactParentsBody">
           <div class="contact-parents-grid">
-            <a href="tel:010-1111-2222" class="contact-card">
+            <a href="tel:010-5290-0018" class="contact-card">
               <div class="cc-role">Groom's Father</div>
               <div class="cc-name">임 경 수</div>
               <div class="cc-call-icon">
@@ -1066,7 +1109,7 @@
                 </svg>
               </div>
             </a>
-            <a href="tel:010-2222-3333" class="contact-card">
+            <a href="tel:010-7130-6907" class="contact-card">
               <div class="cc-role">Groom's Mother</div>
               <div class="cc-name">고 승 희</div>
               <div class="cc-call-icon">
@@ -1075,7 +1118,7 @@
                 </svg>
               </div>
             </a>
-            <a href="tel:010-3333-4444" class="contact-card">
+            <a href="tel:010-5754-0067" class="contact-card">
               <div class="cc-role">Bride's Father</div>
               <div class="cc-name">박 성 균</div>
               <div class="cc-call-icon">
@@ -1084,7 +1127,7 @@
                 </svg>
               </div>
             </a>
-            <a href="tel:010-4444-5555" class="contact-card">
+            <a href="tel:010-3439-0067" class="contact-card">
               <div class="cc-role">Bride's Mother</div>
               <div class="cc-name">정 현 용</div>
               <div class="cc-call-icon">
@@ -1159,7 +1202,7 @@ function shareKakao() {
   Kakao.Share.sendDefault({
     objectType: 'feed',
     content: {
-      title: '저희 결혼합니다 !  (동진 ♥ 영연)',
+      title: '영연 ♡ 동진 — 결혼합니다',
       description: '2026년 6월 27일 토요일 오전 11시 30분\n이룸웨딩컨벤션 5F',
       imageUrl: 'https://yoyonie.github.io/wedding-card/images/og_image.jpg',
       link: {
@@ -1247,7 +1290,6 @@ window.addEventListener('load', function() {
     });
 });
 /* ══ LOADING ══ */
-// Hero 배경 이미지가 완전히 로드된 후 로딩 스크린 숨김
 function hideLoading() {
   document.getElementById('loading-screen').classList.add('hidden');
   setTimeout(() => document.getElementById('heroNames').classList.add('anim'), 60);
@@ -1258,18 +1300,17 @@ function hideLoading() {
 
 (function waitForHero() {
   const heroImg = new Image();
+  let done = false;
+  function go() { if (done) return; done = true; setTimeout(hideLoading, 100); }
+
+  heroImg.onload  = go;
+  heroImg.onerror = go;
   heroImg.src = './images/ogtag_images.jpg';
 
-  if (heroImg.complete) {
-    // 이미 캐시에 있으면 즉시 (최소 300ms 연출용 딜레이)
-    setTimeout(hideLoading, 300);
-  } else {
-    // 이미지 로드 완료 시점에 숨김
-    heroImg.onload  = () => setTimeout(hideLoading, 100);
-    // 이미지 실패해도 최대 3초 후 강제 숨김
-    heroImg.onerror = () => setTimeout(hideLoading, 100);
-    setTimeout(hideLoading, 3000);
-  }
+  // 캐시에 이미 있으면 complete가 true
+  if (heroImg.complete) go();
+  // 최대 3초 안전장치
+  setTimeout(go, 3000);
 })();
 
 /* ══ PARTICLES ══ */
@@ -1371,7 +1412,77 @@ function openMap(type, e) {
 }
 
 /* ══ ACCORDION ══ */
-function toggleAcc(side) { document.getElementById('acc-' + side).classList.toggle('open'); }
+/* ══ 빠른 송금 바텀시트 ══ */
+let _payAccountRaw = ''; // 토스 딥링크용 하이픈 제거 번호
+
+function openPaySheet(displayNum, rawNum, bankName) {
+  // 계좌번호 클립보드 복사
+  navigator.clipboard.writeText(rawNum).catch(() => {
+    const el = document.createElement('textarea');
+    el.value = rawNum; document.body.appendChild(el);
+    el.select(); document.execCommand('copy');
+    document.body.removeChild(el);
+  });
+  _payAccountRaw = rawNum;
+  document.getElementById('ps-account').textContent = displayNum;
+  document.getElementById('ps-bank').textContent = bankName + ' · 계좌번호가 복사되었습니다 ✓';
+  document.getElementById('pay-sheet-backdrop').classList.add('on');
+  document.getElementById('pay-sheet').classList.add('on');
+  document.body.style.overflow = 'hidden';
+}
+
+function closePaySheet() {
+  document.getElementById('pay-sheet-backdrop').classList.remove('on');
+  document.getElementById('pay-sheet').classList.remove('on');
+  document.body.style.overflow = '';
+}
+
+function openKakao() {
+  const kakaoLinks = {
+    '77200204255026': 'https://qr.kakaopay.com/Ej70cjxD5', // 임동진
+    '1002162137989':  'https://qr.kakaopay.com/Ej7shUqah', // 박영연
+  };
+  const link = kakaoLinks[_payAccountRaw];
+  if (link) {
+    window.open(link, '_blank');
+  } else {
+    // 링크 미등록 계좌 — 카카오페이 앱만 실행
+    window.location.href = 'kakaopay://pay';
+    setTimeout(() => {
+      const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
+      window.location.href = isIOS
+        ? 'https://apps.apple.com/kr/app/kakaopay/id1464496236'
+        : 'https://play.google.com/store/apps/details?id=com.kakao.talk';
+    }, 1500);
+  }
+  closePaySheet();
+}
+
+function toggleAcc(side) {
+  const item = document.getElementById('acc-' + side);
+  const body = item.querySelector('.acc-body');
+  const isOpen = item.classList.contains('open');
+
+  if (isOpen) {
+    // 닫기 — 현재 높이 고정 후 0으로
+    body.style.maxHeight = body.scrollHeight + 'px';
+    body.style.padding = '0 18px 20px';
+    requestAnimationFrame(() => {
+      body.style.maxHeight = '0';
+      body.style.padding = '0 18px';
+    });
+    item.classList.remove('open');
+  } else {
+    // 열기 — scrollHeight 정확히 측정 후 적용
+    item.classList.add('open');
+    body.style.padding = '0 18px 20px';
+    body.style.maxHeight = body.scrollHeight + 'px';
+    // 애니메이션 끝난 후 auto로 풀어줘서 내용 변경에도 대응
+    body.addEventListener('transitionend', () => {
+      if (item.classList.contains('open')) body.style.maxHeight = 'none';
+    }, { once: true });
+  }
+}
 
 function toggleContactParents() {
   const btn  = document.getElementById('contactParentsBtn');
@@ -1380,56 +1491,9 @@ function toggleContactParents() {
   body.classList.toggle('open');
 }
 
-/* ══ GALLERY — 18장 전부 페이지 로드 즉시 백그라운드 프리로드 ══ */
+/* ══ GALLERY ══ */
 const lbTotal = 18;
 let moreOpen  = false;
-
-// ① 브라우저 캐시에 18장 전부 미리 올려두기 (백그라운드, UI 블로킹 없음)
-const imgCache = {};
-function preloadAll() {
-  for (let i = 1; i <= lbTotal; i++) {
-    const num = String(i).padStart(2, '0');
-    const im  = new Image();
-    im.src = `./images/gallery_${num}.webp`;
-    imgCache[i] = im;
-  }
-}
-// 페이지 로드 완료 후 유휴 시간에 프리로드 (로딩 속도 방해 안 함)
-if ('requestIdleCallback' in window) {
-  requestIdleCallback(preloadAll, { timeout: 3000 });
-} else {
-  window.addEventListener('load', () => setTimeout(preloadAll, 500));
-}
-
-// ② 갤러리 그리드 생성 — img src는 캐시에서 꺼내 쓰므로 즉시 표시
-(function buildGallery() {
-  const grid = document.getElementById('bentoGrid');
-  for (let i = 0; i < lbTotal; i++) {
-    const num = String(i + 1).padStart(2, '0');
-    const src = `./images/gallery_${num}.webp`;
-
-    const item = document.createElement('div');
-    item.className = 'bento-item' + (i >= 9 ? ' gallery-hidden' : '');
-    item.onclick = () => openLb(i + 1);
-
-    const inner = document.createElement('div');
-    inner.className = 'bento-inner';
-
-    const img = document.createElement('img');
-    img.src = src;           // src 바로 할당 — 이미 캐시에 있으면 즉시 렌더
-    img.decoding = 'async';
-    img.alt = `웨딩 사진 ${i + 1}`;
-
-    const overlay = document.createElement('div');
-    overlay.className = 'bento-overlay';
-    overlay.innerHTML = '<span class="bento-overlay-icon">🔍</span>';
-
-    inner.appendChild(img);
-    item.appendChild(inner);
-    item.appendChild(overlay);
-    grid.appendChild(item);
-  }
-})();
 
 function toggleMore() {
   moreOpen = !moreOpen;
@@ -1445,11 +1509,7 @@ let lbCurrent = 1;
 
 function lbRender(n) {
   lbCurrent = n;
-  const lbImg = document.getElementById('lb-img');
-  // 캐시에서 즉시 꺼내기 — 이미 complete이면 깜빡임 없음
-  const cached = imgCache[n];
-  lbImg.src = (cached && cached.complete) ? cached.src
-              : `./images/gallery_${String(n).padStart(2,'0')}.webp`;
+  document.getElementById('lb-img').src = `./images/gallery_${String(n).padStart(2,'0')}.webp`;
   document.getElementById('lb-count').textContent = `${n} / ${lbTotal}`;
   document.getElementById('lbPrev').classList.toggle('disabled', n <= 1);
   document.getElementById('lbNext').classList.toggle('disabled', n >= lbTotal);
