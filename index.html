@@ -15,12 +15,11 @@
 <title>영연 ♡ 동진 — 결혼합니다</title>
 
 <style>
-  /* ══════════════════════════════
-     LOCAL FONTS — @font-face
-     경로: ./fonts/파일명  (파일명은 아래에서 직접 수정하세요)
-  ══════════════════════════════ */
+  /* ======================
+   FONTS
+   ====================== */
 
-  /* 1. WeddingScript (원본: Great Vibes) — 필기체 */
+  /* Script font */
   @font-face {
     font-family: 'WeddingScript';
     src: url('./fonts/GreatVibes-Regular.ttf') format('truetype');
@@ -29,7 +28,7 @@
     font-display: swap;
   }
 
-  /* 2. WeddingSerif (원본: 교보손글씨) — 세리프 */
+  /* Serif font  */
   @font-face {
     font-family: 'WeddingSerif';
     src: url('./fonts/KyoboHandwriting2020pdy.ttf') format('truetype');
@@ -38,7 +37,7 @@
     font-display: swap;
   }
 
-  /* 3. WeddingSans (원본: Jeju Myeongjo) — 본문 한글/영문 */
+  /* Body font   */
   @font-face {
     font-family: 'WeddingSans';
     src: url('./fonts/JejuMyeongjo.ttf') format('truetype');
@@ -46,7 +45,9 @@
     font-style: normal;
     font-display: swap;
   }
-  /* ── DESIGN TOKENS ── */
+  /* ======================
+   DESIGN TOKENS
+   ====================== */
   :root {
     --cream:       #FAF7F2;
     --ivory:       #F5F0E8;
@@ -71,7 +72,7 @@
   * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
   html { scroll-behavior:smooth; }
   body {
-    background: #E8E0D8; /* PC 양쪽 배경 — 따뜻한 베이지 */
+    background: #E8E0D8; /* background for desktop gutters */
     color: var(--charcoal);
     font-family: 'WeddingSans', 'Apple SD Gothic Neo', sans-serif;
     overflow-x: hidden;
@@ -85,9 +86,9 @@
     to   { opacity:1; transform:translateY(0); }
   }
 
-  /* ══════════════════════════════
-     LOADING SCREEN
-  ══════════════════════════════ */
+  /* ======================
+   LOADING
+   ====================== */
   #loading-screen {
     position: fixed; inset: 0; z-index: 9999;
     background: #0E0B08;
@@ -116,9 +117,9 @@
     opacity:0; animation: fadeUp 0.8s ease 0.6s forwards;
   }
 
-  /* ══════════════════════════════
-     STICKY HEADER
-  ══════════════════════════════ */
+  /* ======================
+   STICKY HEADER
+   ====================== */
   #sticky-header {
     position: fixed; top:0; left:50%; transform:translateX(-50%);
     width:100%; max-width:480px; z-index:200;
@@ -135,7 +136,7 @@
     pointer-events:all;
   }
 
-  /* 스크롤 진행 바 */
+  /* scroll progress bar */
   #progress-bar {
     position:absolute; bottom:0; left:0;
     height:3px; width:0%;
@@ -152,14 +153,10 @@
   }
   .hdr-date { font-size:.6rem; letter-spacing:.2em; color:var(--mid-brown); }
 
-  /* ══════════════════════════════
-     PAGE WRAPPER
-  ══════════════════════════════ */
+  /* ── PAGE WRAPPER ── */
   .page-wrapper { max-width:480px; margin:0 auto; }
 
-  /* ══════════════════════════════
-     HERO — full-screen bg image, all text centered
-  ══════════════════════════════ */
+  /* ── HERO — full-screen bg image, all text centered ── */
   #hero {
     position:relative;
     height:100svh; min-height:680px;
@@ -167,7 +164,7 @@
     display:flex; align-items:center; justify-content:center;
   }
 
-  /* 1. 배경 사진 */
+  /* 1. background image */
   .hero-bg-img {
     position:absolute; inset:0; z-index:1;
     background-image: url('./images/ogtag_images.jpg');
@@ -180,7 +177,7 @@
     to   { transform:scale(1.05) translateY(-1%);  }
   }
 
-  /* 2. 오버레이 — 더 밝게, 사진 분위기 최대한 살리기 */
+  /* 2. overlay */
   .hero-overlay {
     position:absolute; inset:0; z-index:2;
     background:
@@ -192,7 +189,7 @@
         rgba(6,4,2,0.42) 100%);
   }
 
-  /* 3. 파티클 */
+  /* 3. particles */
   .hero-particles { position:absolute; inset:0; z-index:3; pointer-events:none; }
   .particle {
     position:absolute; background:var(--gold-light); border-radius:50%; opacity:0;
@@ -205,7 +202,7 @@
     100% { transform:translateY(-40px) translateX(var(--dx)); opacity:0; }
   }
 
-  /* 4-a. 신부·신랑 이름 — 상단 고정, 더 위로 */
+  /* couple name bar — fixed top */
   .hero-names {
     position:absolute; top:28px; left:0; right:0;
     z-index:5;
@@ -224,7 +221,7 @@
     letter-spacing:.20em; color:rgba(255,255,255,.90);
     text-shadow: 0 1px 6px rgba(0,0,0,.3);
   }
-  /* 가운데 꽃 구분자 */
+  /* center separator */
   .hero-name-sep {
     display:flex; flex-direction:column;
     align-items:center; justify-content:center;
@@ -240,13 +237,13 @@
     50%      { transform:scale(1.14); opacity:1;   }
   }
 
-  /* 4-b. hero-center — 두 블록을 absolute로 각각 독립 배치 */
+  /* 4-b. hero-center */
   .hero-center {
     position:absolute; inset:0; z-index:4;
     pointer-events:none;
   }
 
-  /* 상단 블록: Page One — 더 위로, 더 작게 */
+  /* top text block */
   .hero-block-top {
     position:absolute;
     top:100px; left:0; right:0;
@@ -330,9 +327,7 @@
   }
   .scroll-txt { font-size:.5rem; letter-spacing:.25em; color:rgba(201,169,110,.5); text-transform:uppercase; }
 
-  /* ══════════════════════════════
-     SHARED SECTION STYLES
-  ══════════════════════════════ */
+  /* ── SHARED SECTION STYLES ── */
   section { padding:72px 22px; position:relative; }
 
   .eyebrow {
@@ -363,9 +358,7 @@
   .ornament-line::after  { background:linear-gradient(90deg,var(--beige-mid),transparent); }
   .ornament-sym { color:var(--gold); font-size:.85rem; }
 
-  /* ══════════════════════════════
-     INVITATION
-  ══════════════════════════════ */
+  /* ── INVITATION ── */
   #invitation { background:var(--warm-white); }
 
   .inv-card {
@@ -395,9 +388,7 @@
   .p-parents{ font-size:.78rem; color:var(--mid-brown); line-height:1.9; font-weight:400; }
   .p-rel    { font-size:.68rem; color:var(--light-brown); margin-top:4px; font-weight:400; }
 
-  /* ══════════════════════════════
-     SAVE THE DATE
-  ══════════════════════════════ */
+  /* ── SAVE THE DATE ── */
   #save-the-date { background:var(--cream); }
 
   .cal-wrap { background:#fff; border-radius:var(--radius-xl); padding:30px 18px 34px; box-shadow:var(--shadow-soft); border:1px solid var(--beige); }
@@ -433,9 +424,7 @@
   .countdown-done-heart { display:inline-block; color:var(--accent-rose,#C4856A); animation:hb 1.5s ease-in-out infinite; font-size:1rem; margin:0 2px; }
   .countdown-done { font-family:'WeddingSerif',serif; font-size:1.1rem; color:var(--gold-dark); letter-spacing:.04em; }
 
-  /* ══════════════════════════════
-     LOCATION
-  ══════════════════════════════ */
+  /* ── LOCATION ── */
   #location { background:var(--ivory); }
 
   .venue-name { text-align:center; margin-bottom:22px; }
@@ -513,9 +502,7 @@
   .info-box .info-section { line-height:1.6; margin-bottom:4px; }
   .info-box .info-gap { display:block; height:12px; }
 
-  /* ══════════════════════════════
-     GALLERY — Bento Grid
-  ══════════════════════════════ */
+  /* ── GALLERY — Bento Grid ── */
   #gallery { background:var(--warm-white); padding-bottom:56px; }
 
   .bento { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; margin-top:28px; }
@@ -555,9 +542,7 @@
   .lb-nav.disabled { opacity:.15; pointer-events:none; }
   .lb-count { position:absolute; bottom:16px; left:50%; transform:translateX(-50%); font-size:.62rem; letter-spacing:.18em; color:rgba(255,255,255,.4); }
 
-  /* ══════════════════════════════
-     ACCOUNTS & GIFT
-  ══════════════════════════════ */
+  /* ── ACCOUNTS & GIFT ── */
   #accounts { background:var(--cream); }
 
 
@@ -616,9 +601,9 @@
   .contact-parents-body.open { max-height:300px; }
   .contact-parents-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; padding-top:8px; }
 
-  /* ══════════════════════════════
-     FOOTER
-  ══════════════════════════════ */
+  /* ======================
+   FOOTER
+   ====================== */
   #footer-fade { display:none; }
   /* footer 배경 = cream → accounts와 끊김 없이 이어짐 */
   #footer { background:var(--cream); text-align:center; position:relative; overflow:hidden; display:flex; flex-direction:column; }
@@ -633,7 +618,7 @@
   .footer-img-wrap img {
     width:100%; height:100%; object-fit:cover; object-position:center 30%; display:block;
   }
-  /* 상단: cream에서 투명으로 살짝만 (인물 가리지 않게 18%만), 하단: 60% 이후 어둡게 */
+  
   .footer-img-wrap::after {
     content:''; position:absolute; inset:0; z-index:1;
     background:linear-gradient(to bottom,
@@ -709,13 +694,11 @@
     margin-top:auto; padding:56px 0 2px;
   }
 
-  /* ══════════════════════════════
-     TOAST
-  ══════════════════════════════ */
+  /* ── TOAST ── */
   #toast { position:fixed; bottom:32px; left:50%; transform:translateX(-50%) translateY(16px); background:#1E1A17; color:#fff; padding:12px 24px; border-radius:var(--radius-pill); font-size:.76rem; letter-spacing:.04em; opacity:0; transition:all .38s cubic-bezier(.34,1.56,.64,1); z-index:600; white-space:nowrap; pointer-events:none; border:1px solid rgba(255,255,255,.06); }
   #toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
 
-  /* ══ 빠른 송금 바텀시트 ══ */
+  
   #pay-sheet-backdrop { position:fixed; inset:0; z-index:700; background:rgba(0,0,0,0); pointer-events:none; transition:background .3s ease; }
   #pay-sheet-backdrop.on { background:rgba(0,0,0,.45); pointer-events:all; }
   #pay-sheet { position:fixed; bottom:0; left:50%; transform:translateX(-50%) translateY(100%); width:100%; max-width:480px; z-index:701; background:#fff; border-radius:24px 24px 0 0; padding:0 20px 36px; box-shadow:0 -8px 40px rgba(0,0,0,.12); transition:transform .38s cubic-bezier(.16,1,.3,1); }
@@ -742,18 +725,18 @@
 </head>
 <body>
 
-<!-- LOADING -->
+<!-- Loading screen -->
 <div id="loading-screen">
   <div class="loading-ring"></div>
   <div class="loading-label">Join our beginning</div>
   <div class="loading-sub">Dongjin &amp; Youngyeon · 2026</div>
 </div>
 
-<!-- TOAST -->
+<!-- Toast notification -->
 <div id="toast"></div>
 
-<!-- LIGHTBOX -->
-<!-- 빠른 송금 바텀시트 -->
+<!-- Lightbox overlay -->
+<!-- Pay bottom sheet -->
 <div id="pay-sheet-backdrop" onclick="closePaySheet()"></div>
 <div id="pay-sheet">
   <div class="ps-handle"></div>
@@ -779,7 +762,7 @@
   <div class="lb-count" id="lb-count"></div>
 </div>
 
-<!-- STICKY HEADER -->
+<!-- Sticky header -->
 <div id="sticky-header">
   <span class="hdr-couple">Dongjin &amp; Youngyeon</span>
   <span class="hdr-date">2026. 06. 27</span>
@@ -788,14 +771,14 @@
 
 <div class="page-wrapper">
 
-  <!-- ═══ HERO ═══ -->
+  <!-- Hero -->
   <section id="hero">
-    <div class="hero-bg-img"></div>   <!-- 배경: ./images/ogtag_images.jpg -->
+    <div class="hero-bg-img"></div>
     <div class="hero-overlay"></div>
 
     <div class="hero-particles" id="heroParticles"></div>
 
-    <!-- 신부·신랑 이름 — 상단 고정 -->
+
     <div class="hero-names" id="heroNames">
       <div class="hero-name-item">
         <span class="hero-name-role">신 랑</span>
@@ -810,10 +793,10 @@
       </div>
     </div>
 
-    <!-- 중앙 텍스트 블록 (두 영역으로 분리) -->
+
     <div class="hero-center">
 
-      <!-- ① 상단 블록: Page One + Our wedding day -->
+
       <div class="hero-block-top">
         <div class="hero-cursive" id="heroCursive">
           <span class="hero-cursive-line1">Page</span>
@@ -822,7 +805,7 @@
         </div>
       </div>
 
-      <!-- ② 하단 블록: 구분선 + 날짜 (Dongjin & Youngyeon 제거) -->
+
       <div class="hero-block-bottom">
         <div class="hero-rule" id="heroRule"></div>
         <div class="hero-date-pill" id="heroDatePill">
@@ -832,7 +815,7 @@
         </div>
       </div>
 
-    </div><!-- /.hero-center -->
+    </div>
 
     <div class="hero-scroll">
       <div class="scroll-line"></div>
@@ -840,7 +823,7 @@
     </div>
   </section>
 
-  <!-- ═══ INVITATION ═══ -->
+  <!-- Invitation -->
   <section id="invitation">
     <div class="eyebrow reveal">Invitation</div>
     <div class="inv-card reveal d1">
@@ -868,7 +851,7 @@
     </div>
   </section>
 
-  <!-- ═══ SAVE THE DATE ═══ -->
+  <!-- Save the Date -->
   <section id="save-the-date">
     <div class="eyebrow reveal">Save the Date</div>
     <h2 class="sec-title reveal d1">소중한 날을 기억해 주세요</h2>
@@ -902,7 +885,7 @@
     </div>
   </section>
 
-  <!-- ═══ LOCATION ═══ -->
+  <!-- Location -->
   <section id="location">
     <div class="eyebrow reveal">Location</div>
     <div class="venue-name reveal d1">
@@ -916,7 +899,7 @@
     <div class="map-btns reveal d3">
       <a class="map-btn" href="#" onclick="openMap('naver',event)">
         <span class="map-btn-icon">
-          <!-- 네이버 로고 -->
+
           <svg width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <rect width="24" height="24" rx="5" fill="#03C75A"/>
             <path d="M13.37 12.32L10.49 7.5H7.5V16.5H10.63V11.68L13.51 16.5H16.5V7.5H13.37V12.32Z" fill="white"/>
@@ -926,7 +909,7 @@
       </a>
       <a class="map-btn" href="#" onclick="openMap('kakao',event)">
         <span class="map-btn-icon">
-          <!-- 카카오 로고 -->
+
           <svg width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <rect width="24" height="24" rx="5" fill="#FEE500"/>
             <path d="M12 5.5C8.41 5.5 5.5 7.74 5.5 10.5c0 1.74 1.1 3.27 2.78 4.22l-.7 2.6c-.06.22.18.4.37.27l3.06-2.02c.32.04.65.06.99.06 3.59 0 6.5-2.24 6.5-5S15.59 5.5 12 5.5z" fill="#3A1D1D"/>
@@ -945,10 +928,10 @@
           🚗 <strong>자가용 이용 시</strong><br>
           <span style="padding-left:1.2em"><svg width="8" height="8" viewBox="0 0 8 8" style="display:inline-block;vertical-align:middle;margin-right:5px;margin-bottom:1px"><circle cx="4" cy="4" r="2.5" fill="var(--gold-dark)" opacity="0.7"/></svg>건물 내 지하주차장 (B2~B7)</span>
           <button type="button" class="addr-copy-btn" onclick="copyAddr('/* TODO: 건물 내 주차장 주소 입력 */')">📋 주소 복사</button><br>
-          <!-- TODO: 위 copyAddr 안의 주소를 실제 주소로 교체하세요 -->
+
           <span style="padding-left:1.2em"><svg width="8" height="8" viewBox="0 0 8 8" style="display:inline-block;vertical-align:middle;margin-right:5px;margin-bottom:1px"><circle cx="4" cy="4" r="2.5" fill="var(--gold-dark)" opacity="0.7"/></svg>외부 공영주차장 (도보 8분)</span>
           <button type="button" class="addr-copy-btn" onclick="copyAddr('/* TODO: 공영주차장 주소 입력 */')">📋 주소 복사</button><br>
-          <!-- TODO: 위 copyAddr 안의 주소를 실제 주소로 교체하세요 -->
+
           <div class="info-warn" style="margin-top:8px;">
             🅿️ 2시간 무료 주차 (이후 10분당 1,000원)
           </div>
@@ -982,7 +965,7 @@
     </div>
   </section>
 
-  <!-- ═══ GALLERY ═══ -->
+  <!-- Gallery -->
   <section id="gallery">
     <div class="eyebrow reveal">Our Moment</div>
     <h2 class="sec-title reveal d1">함께한 시간들</h2>
@@ -1013,7 +996,7 @@
     </div>
   </section>
 
-  <!-- ═══ ACCOUNTS ═══ -->
+  <!-- Gift & Accounts -->
   <section id="accounts">
     <div class="eyebrow reveal">Gift</div>
     <h2 class="sec-title reveal d1">마음 전하실 곳</h2>
@@ -1069,7 +1052,7 @@
     <!-- 연락처 -->
     <div class="contact-sec reveal d4">
       <div class="contact-label">Contact</div>
-      <!-- 신랑 신부 -->
+
       <div class="contact-grid">
         <a href="tel:010-5369-4637" class="contact-card">
           <div class="cc-role">Groom</div>
@@ -1144,7 +1127,7 @@
 
   <div id="footer-fade"></div>
 
-  <!-- ═══ FOOTER ═══ -->
+  <!-- Footer -->
   <footer id="footer">
     <div class="footer-cream-bridge"></div>
     <div class="footer-img-wrap">
@@ -1184,17 +1167,17 @@
 </div><!-- /.page-wrapper -->
 
 <script>
-// ── 카카오 SDK 초기화 ──
+// Kakao SDK init
 window.addEventListener('load', () => {
   if (window.Kakao && !Kakao.isInitialized()) {
     Kakao.init('f203fc391557984eafb84d869623d50f');
   }
 });
 
-// ── 카카오톡 공유 ──
+// KakaoTalk share
 function shareKakao() {
   if (!window.Kakao || !Kakao.isInitialized()) {
-    // SDK 미로드 fallback — 링크 복사
+    // fallback: copy link
     copyTxt(window.location.href, '링크가 복사되었습니다');
     return;
   }
@@ -1259,7 +1242,7 @@ function shareKakao() {
 window.addEventListener('load', function() {
   if (typeof naver === 'undefined') return;
 
-  // 이룸웨딩컨벤션 (경찰공제회 자람빌딩 5F) — 구글맵스 확인 좌표
+  // Venue coordinates — verified via Google Maps
   var coords = new naver.maps.LatLng(37.5419163, 126.9498023);
 
   var map = new naver.maps.Map('naver-map', {
@@ -1289,7 +1272,7 @@ window.addEventListener('load', function() {
       else infoWindow.open(map, marker);
     });
 });
-/* ══ LOADING ══ */
+/* ── Loading ── */
 function hideLoading() {
   document.getElementById('loading-screen').classList.add('hidden');
   setTimeout(() => document.getElementById('heroNames').classList.add('anim'), 60);
@@ -1307,13 +1290,13 @@ function hideLoading() {
   heroImg.onerror = go;
   heroImg.src = './images/ogtag_images.jpg';
 
-  // 캐시에 이미 있으면 complete가 true
+  // already cached
   if (heroImg.complete) go();
-  // 최대 3초 안전장치
+  // 3s failsafe
   setTimeout(go, 3000);
 })();
 
-/* ══ PARTICLES ══ */
+/* ── Particles ── */
 (function() {
   const c = document.getElementById('heroParticles');
   for (let i = 0; i < 22; i++) {
@@ -1331,7 +1314,7 @@ function hideLoading() {
   }
 })();
 
-/* ══ FOOTER PARTICLES ══ */
+/* ── Footer particles ── */
 (function() {
   const c = document.getElementById('footerParticles');
   if (!c) return;
@@ -1355,22 +1338,22 @@ window.addEventListener('scroll', () => {
   const scrolled = window.scrollY > 60;
   hdr.classList.toggle('scrolled', scrolled);
 
-  // 진행률 계산: 전체 스크롤 가능 높이 대비 현재 위치
+  // scroll progress
   const total = document.documentElement.scrollHeight - window.innerHeight;
   const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
   progressBar.style.width = pct + '%';
 }, { passive: true });
 
-/* ══ SCROLL REVEAL ══ */
+/* ── Scroll reveal ── */
 const ro = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
 }, { threshold: .08, rootMargin: '0px 0px -30px 0px' });
 document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 
-/* ══ CALENDAR ══ */
+/* ── Calendar ── */
 (function() {
   const grid = document.getElementById('calGrid');
-  const start = 1; // June 2026 starts on Monday
+  const start = 1; // June 2026: Mon
   for (let i = 0; i < start; i++) {
     const e = document.createElement('div'); e.className = 'cd'; grid.appendChild(e);
   }
@@ -1395,7 +1378,7 @@ document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
   if (sec) ob.observe(sec);
 })();
 
-/* ══ TABS ══ */
+/* ── Tabs ── */
 function switchTab(btn, id) {
   document.querySelectorAll('.tab').forEach(b => b.classList.remove('on'));
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('on'));
@@ -1403,7 +1386,7 @@ function switchTab(btn, id) {
   document.getElementById('tab-' + id).classList.add('on');
 }
 
-/* ══ MAP ══ */
+/* ── Map ── */
 function openMap(type, e) {
   if (e) e.preventDefault();
   window.open(type === 'naver'
@@ -1411,12 +1394,10 @@ function openMap(type, e) {
     : 'https://map.kakao.com/link/search/이룸웨딩컨벤션', '_blank');
 }
 
-/* ══ ACCORDION ══ */
-/* ══ 빠른 송금 바텀시트 ══ */
-let _payAccountRaw = ''; // 토스 딥링크용 하이픈 제거 번호
+/* ── Gift accordion + pay sheet ── */
+let _payAccountRaw = '';
 
 function openPaySheet(displayNum, rawNum, bankName) {
-  // 계좌번호 클립보드 복사
   navigator.clipboard.writeText(rawNum).catch(() => {
     const el = document.createElement('textarea');
     el.value = rawNum; document.body.appendChild(el);
@@ -1439,14 +1420,14 @@ function closePaySheet() {
 
 function openKakao() {
   const kakaoLinks = {
-    '77200204255026': 'https://qr.kakaopay.com/Ej70cjxD5', // 임동진
-    '1002162137989':  'https://qr.kakaopay.com/Ej7shUqah', // 박영연
+    '77200204255026': 'https://qr.kakaopay.com/Ej70cjxD5', // Dongjin
+    '1002162137989':  'https://qr.kakaopay.com/Ej7shUqah', // Youngyeon
   };
   const link = kakaoLinks[_payAccountRaw];
   if (link) {
     window.open(link, '_blank');
   } else {
-    // 링크 미등록 계좌 — 카카오페이 앱만 실행
+    // fallback: open KakaoPay app
     window.location.href = 'kakaopay://pay';
     setTimeout(() => {
       const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
@@ -1464,8 +1445,7 @@ function toggleAcc(side) {
   const isOpen = item.classList.contains('open');
 
   if (isOpen) {
-    // 닫기 — 현재 높이 고정 후 0으로
-    body.style.maxHeight = body.scrollHeight + 'px';
+      body.style.maxHeight = body.scrollHeight + 'px';
     body.style.padding = '0 18px 20px';
     requestAnimationFrame(() => {
       body.style.maxHeight = '0';
@@ -1473,11 +1453,9 @@ function toggleAcc(side) {
     });
     item.classList.remove('open');
   } else {
-    // 열기 — scrollHeight 정확히 측정 후 적용
-    item.classList.add('open');
+      item.classList.add('open');
     body.style.padding = '0 18px 20px';
     body.style.maxHeight = body.scrollHeight + 'px';
-    // 애니메이션 끝난 후 auto로 풀어줘서 내용 변경에도 대응
     body.addEventListener('transitionend', () => {
       if (item.classList.contains('open')) body.style.maxHeight = 'none';
     }, { once: true });
@@ -1491,7 +1469,7 @@ function toggleContactParents() {
   body.classList.toggle('open');
 }
 
-/* ══ GALLERY ══ */
+/* ── Gallery ── */
 const lbTotal = 18;
 let moreOpen  = false;
 
@@ -1504,7 +1482,7 @@ function toggleMore() {
   document.getElementById('moreTxt').textContent  = moreOpen ? '접기' : '더보기';
 }
 
-/* ══ LIGHTBOX ══ */
+/* ── Lightbox ── */
 let lbCurrent = 1;
 
 function lbRender(n) {
@@ -1536,7 +1514,7 @@ document.getElementById('lightbox').addEventListener('click', function(e) {
   if (e.target === this) closeLb();
 });
 
-// 키보드 화살표
+// keyboard navigation
 document.addEventListener('keydown', e => {
   if (!document.getElementById('lightbox').classList.contains('on')) return;
   if (e.key === 'ArrowLeft')  lbMove(-1);
@@ -1544,7 +1522,7 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape')     closeLb();
 });
 
-// 스와이프 제스처
+// swipe gesture
 (function lbSwipe() {
   const lb = document.getElementById('lightbox');
   let startX = 0;
@@ -1555,7 +1533,7 @@ document.addEventListener('keydown', e => {
   }, { passive:true });
 })();
 
-/* ══ TOAST ══ */
+/* ── Toast ── */
 let toastTimer;
 function toast(msg) {
   const el = document.getElementById('toast');
@@ -1565,7 +1543,7 @@ function toast(msg) {
   toastTimer = setTimeout(() => el.classList.remove('show'), 2400);
 }
 
-/* ══ COPY ══ */
+/* ── Clipboard ── */
 function copyTxt(t, msg) {
   const message = msg || '계좌번호가 복사되었습니다';
   navigator.clipboard.writeText(t)
@@ -1589,7 +1567,7 @@ function copyAddr(addr) {
     });
 }
 
-/* ══ TOUCH MICRO-INTERACTION ══ */
+/* ── Touch micro-interactions ── */
 document.querySelectorAll('button, .map-btn, .contact-card').forEach(el => {
   el.addEventListener('touchstart', () => { el.style.transition = 'transform 0.1s ease'; el.style.transform = 'scale(0.95)'; }, { passive: true });
   el.addEventListener('touchend',  () => { el.style.transition = 'transform 0.35s cubic-bezier(0.34,1.56,0.64,1)'; el.style.transform = ''; }, { passive: true });
