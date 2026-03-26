@@ -41,7 +41,7 @@
   /* Body font   */
   @font-face {
     font-family: 'WeddingSans';
-    src: url('./fonts/JejuMyeongjo.ttf') format('truetype');
+    src: url('./fonts/Pretendard-Medium.otf') format('opentype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -668,7 +668,7 @@
   .bank-row { padding:12px 0; border-bottom:1px solid var(--beige); }
   .bank-row:last-child { border-bottom:none; }
   .bank-name { font-size:.62rem; color:var(--light-brown); letter-spacing:.08em; margin-bottom:5px; }
-  .bank-num-row { display:flex; align-items:center; gap:10px; }
+  .bank-num-row { display:flex; align-items:center; justify-content:space-between; gap:10px; }
   .bank-num { font-size:.95rem; font-weight:700; color:var(--dark-brown); letter-spacing:.06em; font-variant-numeric:tabular-nums; }
 
   /* contact-sec — 구분선 없음, 간격만 */
@@ -1052,7 +1052,7 @@
       </div>
       <div class="info-panel-body">
         <div class="itp-panel on" id="itp-parking">
-          <p class="itp-line">🅿️ 건물 내외부 2시간 무료 주차 가능합니다. (이후 10분당 1,000원)</p>
+          <p class="itp-line">🅿️ 2시간 무료 주차 가능합니다. (이후 10분당 1,000원)</p>
           <p class="itp-line">⚠️ 주차장 입·출구가 동일한 통로입니다.</p>
           <p class="itp-line itp-gap">✅ 공덕역 특성상 지하철 및 버스 이용이 더욱 편리합니다.</p>
           <p class="itp-line itp-section">🚈 지하철</p>
@@ -1127,15 +1127,15 @@
       <div class="acc-body">
         <div class="bank-row">
           <div class="bank-name">국민은행 · 임동진</div>
-          <div class="bank-num-row"><span class="bank-num">772002-04-255026</span><button type="button" class="copy-num-btn" onclick="openPaySheet('772002-04-255026','77200204255026','국민은행 · 임동진')">복사</button></div>
+          <div class="bank-num-row"><span class="bank-num">772002-04-255026</span><button type="button" class="parking-copy-btn" onclick="openPaySheet('772002-04-255026','77200204255026','국민은행 · 임동진')">번호 복사</button></div>
         </div>
         <div class="bank-row">
           <div class="bank-name">우리은행 · 임경수 (부)</div>
-          <div class="bank-num-row"><span class="bank-num">1002-733-680397</span><button type="button" class="copy-num-btn" onclick="copyTxt('1002733680397')">복사</button></div>
+          <div class="bank-num-row"><span class="bank-num">1002-733-680397</span><button type="button" class="parking-copy-btn" onclick="copyTxt('1002733680397')">번호 복사</button></div>
         </div>
         <div class="bank-row">
           <div class="bank-name">국민은행 · 고승희 (모)</div>
-          <div class="bank-num-row"><span class="bank-num">772-21-0091-724</span><button type="button" class="copy-num-btn" onclick="copyTxt('772210091724')">복사</button></div>
+          <div class="bank-num-row"><span class="bank-num">772-21-0091-724</span><button type="button" class="parking-copy-btn" onclick="copyTxt('772210091724')">번호 복사</button></div>
         </div>
       </div>
     </div>
@@ -1149,17 +1149,17 @@
       <div class="acc-body">
         <div class="bank-row">
           <div class="bank-name">우리은행 · 박영연</div>
-          <div class="bank-num-row"><span class="bank-num">1002-162-137989</span><button type="button" class="copy-num-btn" onclick="openPaySheet('1002-162-137989','1002162137989','우리은행 · 박영연')">복사</button></div>
+          <div class="bank-num-row"><span class="bank-num">1002-162-137989</span><button type="button" class="parking-copy-btn" onclick="openPaySheet('1002-162-137989','1002162137989','우리은행 · 박영연')">번호 복사</button></div>
         </div>
         <div class="bank-row">
           <div class="bank-name">우리은행 · 박성균 (부)</div>
-          <div class="bank-num-row"><span class="bank-num">1002-849-555777</span><button type="button" class="copy-num-btn" onclick="copyTxt('1002849555777')">복사</button></div>
+          <div class="bank-num-row"><span class="bank-num">1002-849-555777</span><button type="button" class="parking-copy-btn" onclick="copyTxt('1002849555777')">번호 복사</button></div>
         </div>
         <div class="bank-row">
           <div class="bank-name">하나은행 · 정현용 (모)</div>
           <div class="bank-num-row">
             <span class="bank-num">010-741800-67207</span>
-            <button type="button" class="copy-num-btn" onclick="copyTxt('01074180067207')">복사</button>
+            <button type="button" class="parking-copy-btn" onclick="copyTxt('01074180067207')">번호 복사</button>
           </div>
         </div>
       </div>
