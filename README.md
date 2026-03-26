@@ -15,12 +15,15 @@ wedding-card/
 │   ├── KyoboHandwriting2020pdy.ttf  # Serif font (section headings)
 │   └── JejuMyeongjo.ttf             # Body font (Korean body text)
 ├── images/
-│   ├── ogtag_images.jpg    # Hero background
-│   ├── og_image.jpg        # Open Graph / KakaoTalk share thumbnail
-│   ├── footer_images.jpg   # Footer background
-│   └── gallery_01.webp     # Gallery images (01 – 18)
-│       ...
-│       gallery_18.webp
+│   ├── ogtag_images.webp   # Hero background
+│   ├── og_image.jpg        # Open Graph / KakaoTalk share thumbnail (jpg — kakao crawler compatibility)
+│   ├── footer_images.webp  # Footer background
+│   ├── gallery_01.webp     # Gallery full-size / lightbox (01 – 18)
+│   │   ...
+│   │   gallery_18.webp
+│   ├── gallery_01_thumb.webp  # Gallery thumbnails / grid (01 – 18)
+│   │   ...
+│   └── gallery_18_thumb.webp
 └── README.md
 ```
 
