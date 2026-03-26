@@ -411,8 +411,8 @@
   @keyframes hb { 0%,100%{transform:scale(1);} 50%{transform:scale(1.4);} }
 
   .date-badge { margin-top:22px; text-align:center; padding:22px 20px; background:linear-gradient(135deg,rgba(201,169,110,.05),rgba(201,169,110,.10)); border-radius:var(--radius-lg); border:1px solid rgba(201,169,110,.14); }
-  .date-badge-main { font-family:'WeddingSerif',serif; font-size:1.3rem; color:var(--dark-brown); font-weight:700; letter-spacing:.04em; }
-  .date-badge-time { font-family:'WeddingSerif',serif; font-size:1.3rem; color:var(--dark-brown); margin-top:4px; letter-spacing:.04em; font-weight:700; }
+  .date-badge-main { font-family:'WeddingSans',sans-serif; font-size:1.3rem; color:var(--dark-brown); font-weight:700; letter-spacing:.04em; }
+  .date-badge-time { font-family:'WeddingSans',sans-serif; font-size:1.3rem; color:var(--dark-brown); margin-top:4px; letter-spacing:.04em; font-weight:700; }
   .date-badge-rule { width:28px; height:1px; background:linear-gradient(90deg,transparent,var(--gold-dark),transparent); margin:16px auto; }
   .countdown-label { font-size:.78rem; color:var(--mid-brown); letter-spacing:.02em; margin-bottom:12px; word-break:keep-all; }
   .countdown-wrap { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:4px; }
@@ -642,7 +642,7 @@
     background:linear-gradient(135deg, rgba(201,169,110,.1), rgba(201,169,110,.06));
     border:1px solid rgba(201,169,110,.28);
     border-radius:var(--radius-lg);
-    font-family:'WeddingSerif', serif;
+    font-family:'WeddingSans', sans-serif;
     font-size:.84rem;
     color:var(--gold-dark);
     line-height:2.0;
@@ -681,7 +681,7 @@
   .contact-card:hover  { box-shadow:var(--shadow-soft); border-color:var(--gold-light); transform:translateY(-1px); }
   .contact-card:active { transform:scale(.94); }
   .cc-role  { font-family:'WeddingSans',sans-serif; font-size:.5rem; letter-spacing:.12em; color:var(--light-brown); margin-bottom:3px; text-transform:uppercase; }
-  .cc-name  { font-family:'WeddingSans',sans-serif; font-size:.82rem; font-weight:400; color:var(--dark-brown); margin-bottom:6px; letter-spacing:.06em; }
+  .cc-name  { font-family:'WeddingSans',sans-serif; font-size:.82rem; font-weight:700; color:var(--dark-brown); margin-bottom:6px; letter-spacing:.06em; }
   .cc-call-icon { display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px; background:linear-gradient(135deg,rgba(201,169,110,.15),rgba(201,169,110,.08)); border:1px solid rgba(201,169,110,.25); border-radius:50%; transition:all .2s ease; }
   .cc-call-icon svg { width:12px; height:12px; }
   .contact-card:hover .cc-call-icon { background:var(--gold); border-color:var(--gold); }
@@ -925,11 +925,6 @@
 
       <div class="hero-block-bottom">
         <div class="hero-rule" id="heroRule"></div>
-        <div class="hero-date-pill" id="heroDatePill">
-          <span>June 27, 2026</span>
-          <div class="pill-dot"></div>
-          <span>Saturday</span>
-        </div>
       </div>
 
     </div>
@@ -1379,7 +1374,7 @@ function hideLoading() {
   setTimeout(() => document.getElementById('heroNames').classList.add('anim'), 60);
   setTimeout(() => document.getElementById('heroCursive').classList.add('anim'), 160);
   setTimeout(() => document.getElementById('heroRule').classList.add('anim'), 700);
-  setTimeout(() => document.getElementById('heroDatePill').classList.add('anim'), 900);
+
 }
 
 (function waitForHero() {
